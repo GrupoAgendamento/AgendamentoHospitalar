@@ -1,3 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using ProjetoAgendamentoHospitalar.Database;
+using ProjetoAgendamentoHospitalar.Persistence;
+using ProjetoAgendamentoHospitalar.Persistence.Interfaces;
+using ProjetoAgendamentoHospitalar.Service;
+using ProjetoAgendamentoHospitalar.Service.Interfaces;
+
 namespace ProjetoAgendamentoHospitalar
 {
     public class Program
@@ -9,9 +16,17 @@ namespace ProjetoAgendamentoHospitalar
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<ApplicationDbContext>(
+                    options => options.UseSqlServer(
+                        builder.Configuration.GetConnectionString("Projeto")  
+                ));
+            builder.Services.AddScoped<IBeneficiarioService, BeneficiarioService>();
+            builder.Services.AddScoped<IBeneficiarioPersist, BeneficiarioPersistence>();
+            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
+
 
             var app = builder.Build();
 

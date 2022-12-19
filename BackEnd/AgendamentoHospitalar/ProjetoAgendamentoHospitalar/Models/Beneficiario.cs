@@ -45,5 +45,5 @@ public partial class Beneficiario
     public string Senha { get; set; } = null!;
 
     [InverseProperty("IdBeneficiarioNavigation")]
-    public virtual ICollection<Agendamento> Agendamentos { get; } = new List<Agendamento>();
+    public virtual ICollection<Agendamento>? Agendamentos { get; } = new List<Agendamento>();
 }
