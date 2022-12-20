@@ -27,12 +27,12 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                return this.StatusCode(StatusCodes.Status404NotFound,
                 $"Erro ao tentar recuperar hospital. Erro: {ex}");
             }
         }
 
-        [HttpGet("{idAgendamento}")]
+        [HttpGet("api/agendamento/{idAgendamento}")]
         public async Task<ActionResult<Agendamento>> GetById(int agendamentoId)
         {
             try
@@ -43,12 +43,12 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                return this.StatusCode(StatusCodes.Status404NotFound,
                 $"Erro ao tentar recuperar hospital. Erro: {ex}");
             }
         }
 
-        [HttpGet("{idBeneficiario}")]
+        [HttpGet("api/agendamento/beneficiario/{idBeneficiario}")]
         public async Task<ActionResult<Agendamento>> GetByBeneficiario(int idBeneficiario)
         {
             try
@@ -59,12 +59,12 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                return this.StatusCode(StatusCodes.Status404NotFound,
                 $"Erro ao tentar recuperar eventos. Erro: {ex}");
             }
         }
 
-        [HttpGet("{idEspecialidade}")]
+        [HttpGet("api/agendamento/especialidade/{idEspecialidade}")]
         public async Task<ActionResult<Agendamento>> GetByEspecialidade(int idEspecialidade)
         {
             try
@@ -75,12 +75,12 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                return this.StatusCode(StatusCodes.Status404NotFound,
                 $"Erro ao tentar recuperar eventos. Erro: {ex}");
             }
         }
 
-        [HttpGet("{idProfissional}")]
+        [HttpGet("api/agendamento/profissional/{idProfissional}")]
         public async Task<ActionResult<Agendamento>> GetByProfissional(int idProfissional)
         {
             try
@@ -91,12 +91,12 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                return this.StatusCode(StatusCodes.Status404NotFound,
                 $"Erro ao tentar recuperar eventos. Erro: {ex}");
             }
         }
 
-        [HttpGet("{idHospital}")]
+        [HttpGet("api/agendamento/hospital/{idHospital}")]
         public async Task<ActionResult<Agendamento>> GetByHospital(int idHospital)
         {
             try
@@ -107,7 +107,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                return this.StatusCode(StatusCodes.Status404NotFound,
                 $"Erro ao tentar recuperar eventos. Erro: {ex}");
             }
         }

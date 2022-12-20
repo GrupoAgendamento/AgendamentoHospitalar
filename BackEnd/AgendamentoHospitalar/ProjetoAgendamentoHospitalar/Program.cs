@@ -35,6 +35,10 @@ namespace ProjetoAgendamentoHospitalar
             builder.Services.AddScoped<IHospitalPersist, HospitalPersistence>();
             builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
 
+            builder.Services.AddScoped<IAgendamentoService, AgendamentoService>();
+            builder.Services.AddScoped<IAgendamentoPersist, AgendamentoPersistence>();
+            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
+
 
 
             var app = builder.Build();
