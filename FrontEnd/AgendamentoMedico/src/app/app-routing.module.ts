@@ -1,8 +1,18 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router';
+import { BeneficiarioCadastrarComponent} from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component'
+import { BeneficiarioListaComponent} from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component'
+import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
+import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '**', redirectTo: '' }
+  { path: '', pathMatch: 'full' },
+  { path: 'beneficiariocadastrar', component: BeneficiarioCadastrarComponent },
+  { path: 'beneficiariolista', component: BeneficiarioListaComponent },
+  { path: 'hospitalcadastrar', component: HospitalEditarComponent },
+  { path: 'hospitallista', component: HospitalListaComponent },
+
 ];
 
 @NgModule({

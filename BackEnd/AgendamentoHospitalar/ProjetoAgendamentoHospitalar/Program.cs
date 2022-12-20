@@ -48,6 +48,7 @@ namespace ProjetoAgendamentoHospitalar
 
             app.UseHttpsRedirection();
 
+
             app.UseAuthorization();
 
             app.UseCors(x => x

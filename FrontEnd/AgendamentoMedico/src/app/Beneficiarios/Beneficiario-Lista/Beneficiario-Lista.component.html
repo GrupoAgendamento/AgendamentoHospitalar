@@ -1,0 +1,50 @@
+<h2>Beneficiários</h2>
+<hr />
+
+<div  class="form-inline mb-2">
+    <div class="form-grou br-2">
+        <label class="mr-2"></label>
+        <input
+            type="text"
+            class="form-control mr-2"
+            placeholder="buscar"
+
+            >
+    </div>
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+       <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+        <th>N.Carteirinha</th>
+        <th>Email</th>
+        <th>Opções</th>
+       </tr>
+    </thead>
+    <tbody *ngIf="beneficiarios && beneficiarios.length">
+        <tr *ngFor="let beneficiario of beneficiarios">
+            <td>{{beneficiario.idBeneficiario}}</td>
+            <td>{{beneficiario.nome}}</td>
+            <td>{{beneficiario.cpf}}</td>
+            <td>{{beneficiario.telefone}}</td>
+            <td>{{beneficiario.endereco}}</td>
+            <td>{{beneficiario.numeroCarteirinha}}</td>
+            <td>{{beneficiario.email}}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm mr-1">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ms-1">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="!beneficiarios">
+        <tr>
+            <td colspan="8">
+                <h4>Nenhum beneficiario encontrado</h4>
+            </td>
+        </tr>
+    </tfoot>
+</table>
