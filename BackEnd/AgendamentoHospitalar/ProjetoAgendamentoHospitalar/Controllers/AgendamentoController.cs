@@ -9,6 +9,5 @@ namespace ProjetoAgendamentoHospitalar.Controllers
     public class AgendamentoController : ControllerBase
     {
        
-       
     }
 }
