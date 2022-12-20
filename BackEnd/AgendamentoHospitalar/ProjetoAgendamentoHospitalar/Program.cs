@@ -16,6 +16,7 @@ namespace ProjetoAgendamentoHospitalar
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddCors();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddEntityFrameworkSqlServer()
@@ -29,7 +30,10 @@ namespace ProjetoAgendamentoHospitalar
 
             builder.Services.AddScoped<IEspecialidadeService, EspecialidadeService>();
             builder.Services.AddScoped<IEspecialidadePersist, EspecialidadePersistence>();
-            
+
+            builder.Services.AddScoped<IHospitalService, HospitalService>();
+            builder.Services.AddScoped<IHospitalPersist, HospitalPersistence>();
+            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
 
 
 
