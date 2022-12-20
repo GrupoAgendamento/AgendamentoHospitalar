@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoAgendamentoHospitalar.Models;
+using ProjetoAgendamentoHospitalar.Service.Interfaces;
 
 namespace ProjetoAgendamentoHospitalar.Controllers
 {
@@ -7,48 +8,106 @@ namespace ProjetoAgendamentoHospitalar.Controllers
     [ApiController]
     public class EspecialidadeController : ControllerBase
     {
-        [HttpGet]
-        [Route("/ConsultarEspecialidades")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Models.Especialidade))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public Models.Especialidade ConsultarEspecialidades()
+        public IEspecialidadeService _especialidadeService;
+        public EspecialidadeController(IEspecialidadeService especialidadeService)
         {
-            return new Models.Especialidade();
+            _especialidadeService = especialidadeService;
         }
 
         [HttpGet]
-        [Route("/ConsultarPorId/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Models.Especialidade))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public Models.Especialidade ListarPorId(int id)
+        public async Task<ActionResult<Especialidade>> Get()
         {
-            return new Models.Especialidade();
+            try
+            {
+                var especialidades = await _especialidadeService.GetAllEspecialidades();
+                if (especialidades == null) return NotFound("Nenhuma especialidade encontrada");
+                return Ok(especialidades);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao recuperar especialidade. Erro: {ex}");
+            }
+        }
+
+        [HttpGet("{especialidadeId}")]
+        public async Task<ActionResult<Especialidade>> Get(int especialidadeId)
+        {
+            try
+            {
+                var especialidade = await _especialidadeService.GetEspecialidadeById(especialidadeId);
+                if (especialidade == null) return NotFound($"Especialidade com id {especialidadeId} não encontrada");
+                return Ok(especialidade);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao recuperar especialidade. Erro: {ex}");
+            }
+        }
+
+        [HttpGet("nome/{especialidadeNome}")]
+        public async Task<ActionResult<Especialidade>> GetNome(string especialidadeNome)
+        {
+            try
+            {
+                var especialidade = await _especialidadeService.GetEspecialidadeByNome(especialidadeNome);
+                if (especialidade == null) return NotFound($"Especialidade  {especialidadeNome} não encontrada");
+                return Ok(especialidade);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao recuperar Nome. Erro: {ex}");
+            }
         }
 
         [HttpPost]
-        [Route("/CadastrarEspecialidade")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public int CadastrarEspecialidade(Models.Especialidade model)
+        public async Task<ActionResult<Especialidade>> Post(Especialidade model)
         {
-            return 0;
+            try
+            {
+                var especialidade = await _especialidadeService.AddEspecialidade(model);
+                if (especialidade == null) return BadRequest("Erro ao adicionar especialidade");
+                return Ok(especialidade);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao adicionar especialidade. Erro: {ex}");
+            }
         }
 
-        [HttpDelete]
-        [Route("/Deletar")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public int DeletarEspecialidade(Models.Especialidade model)
+        [HttpPut("{especialidade}")]
+        public async Task<ActionResult<Especialidade>> Put(int especialidadeId, Especialidade model)
         {
-            return 0;
+            try
+            {
+                var especialidade = await _especialidadeService.UpdateEspecialidade(model, especialidadeId);
+                if (especialidade == null) return BadRequest("Erro ao atualizar especialidade");
+                return Ok(especialidade);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao atualizar especialidade. Erro: {ex}");
+            }
         }
-        [HttpPatch]
-        [Route("/Atualizar")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public int AtualizarEspecialiade(Models.Especialidade model)
+
+        [HttpDelete("{especialidadeId}")]
+        public async Task<ActionResult<Especialidade>> Delete(int especialidadeId)
         {
-            return 0;
+            try
+            {
+                var especialidade = await _especialidadeService.DeleteEspecialidade(especialidadeId);
+                if (especialidade == null) return BadRequest("Erro ao  deletar especialidade");
+                return Ok(especialidade);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao deletar especialidade. Erro: {ex}");
+            }
         }
     }
 }
