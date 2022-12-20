@@ -22,8 +22,8 @@ public partial class Especialidade
     public bool Ativo { get; set; }
 
     [InverseProperty("IdEspecialidadeNavigation")]
-    public virtual ICollection<AgendamentoConfiguracao> AgendamentoConfiguracaos { get; } = new List<AgendamentoConfiguracao>();
+    public virtual ICollection<AgendamentoConfiguracao>? AgendamentoConfiguracaos { get; } = new List<AgendamentoConfiguracao>();
 
     [InverseProperty("IdEspecialidadeNavigation")]
-    public virtual ICollection<Agendamento> Agendamentos { get; } = new List<Agendamento>();
+    public virtual ICollection<Agendamento>? Agendamentos { get; } = new List<Agendamento>();
 }

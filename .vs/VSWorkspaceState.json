@@ -3,8 +3,9 @@
     "",
     "\\BackEnd",
     "\\BackEnd\\AgendamentoHospitalar",
-    "\\BackEnd\\AgendamentoHospitalar\\ProjetoAgendamentoHospitalar"
+    "\\BackEnd\\AgendamentoHospitalar\\ProjetoAgendamentoHospitalar",
+    "\\BackEnd\\AgendamentoHospitalar\\ProjetoAgendamentoHospitalar\\Models"
   ],
-  "SelectedNode": "\\BackEnd\\AgendamentoHospitalar\\ProjetoAgendamentoHospitalar\\ProjetoAgendamentoHospitalar.csproj",
+  "SelectedNode": "\\BackEnd\\AgendamentoHospitalar\\ProjetoAgendamentoHospitalar\\Models\\Especialidade.cs",
   "PreviewInSolutionExplorer": false
 }

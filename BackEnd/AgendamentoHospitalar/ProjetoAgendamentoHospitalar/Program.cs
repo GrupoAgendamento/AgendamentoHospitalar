@@ -27,6 +27,11 @@ namespace ProjetoAgendamentoHospitalar
             builder.Services.AddScoped<IBeneficiarioPersist, BeneficiarioPersistence>();
             builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
 
+            builder.Services.AddScoped<IEspecialidadeService, EspecialidadeService>();
+            builder.Services.AddScoped<IEspecialidadePersist, EspecialidadePersistence>();
+            
+
+
 
             var app = builder.Build();
 
@@ -41,6 +46,10 @@ namespace ProjetoAgendamentoHospitalar
 
             app.UseAuthorization();
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.MapControllers();
 
