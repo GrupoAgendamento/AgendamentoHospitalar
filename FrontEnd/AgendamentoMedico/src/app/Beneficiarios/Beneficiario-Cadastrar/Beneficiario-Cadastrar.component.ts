@@ -21,7 +21,7 @@ export class BeneficiarioCadastrarComponent implements OnInit {
   }
 
   Salvar(){
-    this.http.post('https://localhost:7026/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
+    this.http.post('https://localhost:7088/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
       this.beneficiario = new Beneficiario();
       this.mensagem = 'Beneficiário cadastrado com sucesso!';
       setTimeout(() => {
