@@ -20,7 +20,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
         [Route("/ConsultarPorId/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Models.Especialidade))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public Models.Especialidade ListarPorId(int id) 
+        public Models.Especialidade ListarPorId(int id)
         {
             return new Models.Especialidade();
         }

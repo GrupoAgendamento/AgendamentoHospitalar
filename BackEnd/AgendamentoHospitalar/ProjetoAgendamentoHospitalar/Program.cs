@@ -28,6 +28,9 @@ namespace ProjetoAgendamentoHospitalar
             builder.Services.AddScoped<IBeneficiarioPersist, BeneficiarioPersistence>();
             builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
 
+            builder.Services.AddScoped<IHospitalService, HospitalService>();
+            builder.Services.AddScoped<IHospitalPersist, HospitalPersistence>();
+            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
 
             var app = builder.Build();
 
@@ -39,6 +42,7 @@ namespace ProjetoAgendamentoHospitalar
             }
 
             app.UseHttpsRedirection();
+
 
             app.UseAuthorization();
 
