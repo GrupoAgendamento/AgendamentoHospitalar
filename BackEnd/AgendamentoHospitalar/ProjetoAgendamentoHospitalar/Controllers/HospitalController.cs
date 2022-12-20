@@ -48,7 +48,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
         }
 
-        [HttpGet("cpf/{hospitalCnpj}")]
+        [HttpGet("cnpjf/{hospitalCnpj}")]
         public async Task<ActionResult<Hospital>> Get(string hospitalCnpj)
         {
             try

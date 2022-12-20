@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'beneficiariolista', component: BeneficiarioListaComponent },
   { path: 'hospitalcadastrar', component: HospitalEditarComponent },
   { path: 'hospitallista', component: HospitalListaComponent },
-
+  { path: 'hospitalcadastrar/:id', component: HospitalEditarComponent },
 ];
 
 @NgModule({
