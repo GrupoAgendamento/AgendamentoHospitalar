@@ -16,6 +16,7 @@ namespace ProjetoAgendamentoHospitalar
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddCors();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddEntityFrameworkSqlServer()
@@ -41,7 +42,11 @@ namespace ProjetoAgendamentoHospitalar
 
             app.UseAuthorization();
 
-
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+                
             app.MapControllers();
 
             app.Run();

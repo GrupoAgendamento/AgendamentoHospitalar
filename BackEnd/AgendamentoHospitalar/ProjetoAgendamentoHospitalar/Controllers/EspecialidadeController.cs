@@ -29,7 +29,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
         [Route("/CadastrarEspecialidade")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public int CadastrarEspecialidade(Models.Especialidade)
+        public int CadastrarEspecialidade(Models.Especialidade model)
         {
             return 0;
         }
@@ -38,7 +38,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
         [Route("/Deletar")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public int DeletarEspecialidade(Models.Especialidade)
+        public int DeletarEspecialidade(Models.Especialidade model)
         {
             return 0;
         }
@@ -46,7 +46,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
         [Route("/Atualizar")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public int AtualizarEspecialiade(Models.Especialidade)
+        public int AtualizarEspecialiade(Models.Especialidade model)
         {
             return 0;
         }
