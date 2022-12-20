@@ -8,6 +8,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
     [Route("api/[controller]")]
     public class AgendamentoController : ControllerBase
     {
-
+       
+       
     }
 }
