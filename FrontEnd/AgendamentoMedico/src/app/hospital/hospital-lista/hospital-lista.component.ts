@@ -12,6 +12,7 @@ import { map } from 'rxjs';
 
 export class HospitalListaComponent {
     hospitalLista: IHospitalDto[] = [];
+    buscaNome: string = '';
 
     constructor(private http: HttpClient, private router: Router) {
         this.getHospitais();

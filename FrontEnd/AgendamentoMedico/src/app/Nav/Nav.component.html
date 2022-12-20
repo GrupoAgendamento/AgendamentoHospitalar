@@ -1,20 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-<a class="navbar-brand" href="#">Agendamento</a>
-<button class="navbar-toggler" (click)="isCollapsed = !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse"id="navbarNav">
-    <ul class="navbar-nav">
-    <li class="nav-item active">
-        <a class="nav-link" routerLink="beneficiariocadastrar" >Cadastro de Beneficiários <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" routerLink="beneficiariolista" >Listar Beneficiários</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" routerLink="hospitalcadastrar" >Cadastrar Hospital</a>
-    </li>
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container-fluid">
+    
+    <a class="navbar-brand" href="#">Agendamento</a>
+    
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-expanded="false">Beneficiários</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="beneficiariocadastrar">Cadastrar</a></li>
+                    <li><a class="dropdown-item" routerLink="beneficiariolista">Ver beneficiários</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-expanded="false">Hospitais</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="hospitalcadastrar">Cadastrar</a></li>
+                    <li><a class="dropdown-item" routerLink="hospitallista">Ver hospitais</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-expanded="false">Especialidades</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="">Cadastrar</a></li>
+                    <li><a class="dropdown-item" routerLink="">Ver especialidades</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-expanded="false">Profissionais</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="">Cadastrar</a></li>
+                    <li><a class="dropdown-item" routerLink="">Ver profissionais</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
 </nav>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Ninth navbar example">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        
+  </nav> -->

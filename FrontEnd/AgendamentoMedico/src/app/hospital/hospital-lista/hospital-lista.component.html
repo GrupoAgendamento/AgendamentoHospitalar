@@ -1,13 +1,14 @@
 <h2>Hospitais</h2>
 <hr />
 
-<div  class="form-inline mb-2">
+<div class="form-inline mb-2">
     <div class="form-grou br-2">
         <label class="mr-2"></label>
         <input
             type="text"
             class="form-control mr-2"
             placeholder="buscar"
+            [(ngModel)]="buscaNome"
             >
     </div>
 </div>
@@ -28,7 +29,7 @@
        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let hospital of hospitalLista">
+        <tr *ngFor="let hospital of hospitalLista | filter:buscaNome">
             <td>{{hospital.nome}}</td>
             <td>{{hospital.cnpj}}</td>
             <td>{{hospital.endereco}}</td>
@@ -36,7 +37,6 @@
             <td>{{hospital.cnes}}</td>
             <td>{{hospital.ativo}}</td>
             <td>
-                <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="detalharHospital(hospital.idHospital);">Ver</button>
                 <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarHospital(hospital.idHospital);">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerHospital(hospital.idHospital);">Excluir</button>
             </td>
