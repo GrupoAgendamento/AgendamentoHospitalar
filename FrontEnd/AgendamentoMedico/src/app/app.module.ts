@@ -7,13 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
-
+import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
+import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
+import { NavComponent } from './Nav/Nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BeneficiarioListaComponent,
-    BeneficiarioCadastrarComponent
+    BeneficiarioCadastrarComponent,
+    HospitalListaComponent,
+    HospitalEditarComponent,
+    NavComponent
    ],
   imports: [
     AppRoutingModule,
