@@ -4,9 +4,9 @@ import { BeneficiarioCadastrarComponent} from './Beneficiarios/Beneficiario-Cada
 import { BeneficiarioListaComponent} from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component'
 
 const routes: Routes = [
-  { path: '**', redirectTo: '' },
   { path: 'beneficiariocadastrar', component: BeneficiarioCadastrarComponent },
-  { path: 'beneficiariolista', component: BeneficiarioListaComponent }
+  { path: 'beneficiariolista', component: BeneficiarioListaComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

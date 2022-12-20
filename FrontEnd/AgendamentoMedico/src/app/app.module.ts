@@ -7,13 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
+import { NavComponent } from './Nav/Nav.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     BeneficiarioListaComponent,
-    BeneficiarioCadastrarComponent
+    BeneficiarioCadastrarComponent,
+      NavComponent
    ],
   imports: [
     AppRoutingModule,
