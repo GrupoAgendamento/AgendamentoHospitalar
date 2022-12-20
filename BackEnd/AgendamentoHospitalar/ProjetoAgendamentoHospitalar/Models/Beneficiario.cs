@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,7 +40,7 @@ public partial class Beneficiario
     [Column("senha")]
     [StringLength(30)]
     [Unicode(false)]
-    public string Senha { get; set; } = null!;
+    public string? Senha { get; set; } = null!;
 
     [InverseProperty("IdBeneficiarioNavigation")]
     public virtual ICollection<Agendamento>? Agendamentos { get; } = new List<Agendamento>();
