@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-Beneficiario-Editar',
@@ -15,8 +15,7 @@ export class BeneficiarioEditarComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router,
-    private toastr: ToastrService
+    private router: Router
     ) {
       this.route.paramMap.subscribe((params) => {
         this.idBeneficiario = Number(params.get('id'));
@@ -50,9 +49,7 @@ export class BeneficiarioEditarComponent implements OnInit {
       response => {this.router.navigate(['/beneficiariolista']); },
       error => console.log(error)
     );
-    this.toastr.success('Beneficiário salvo com sucesso.', 'Sucesso!', {
-      timeOut: 3000,
-    });
   }
 
 }
+
