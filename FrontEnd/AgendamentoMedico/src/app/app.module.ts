@@ -12,15 +12,19 @@ import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/B
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
 import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
 import { NavComponent } from './Nav/Nav.component';
+import { AgendarComponent } from './Agendamento/agendar/agendar.component';
+import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     BeneficiarioListaComponent,
     BeneficiarioCadastrarComponent,
     HospitalListaComponent,
     HospitalEditarComponent,
-    NavComponent
+    NavComponent,
+    AgendarComponent,
+    ConsultarComponent,
   ],
   imports: [
     AppRoutingModule,
