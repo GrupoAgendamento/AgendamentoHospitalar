@@ -14,8 +14,6 @@ import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 import { NavComponent } from './Nav/Nav.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
-import { AgendarComponent } from './Agendamento/agendar/agendar.component';
-import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
 import { EspecialidadesCadastrarComponent } from './Especialidades/especialidades-cadastrar/especialidades-cadastrar.component';
 import { EspecialidadesEditarComponent } from './Especialidades/especialidades-editar/especialidades-editar.component';
 
@@ -30,8 +28,6 @@ import { EspecialidadesEditarComponent } from './Especialidades/especialidades-e
     HospitalListaComponent,
     HospitalEditarComponent,
     NavComponent,
-    AgendarComponent,
-    ConsultarComponent,
     EspecialidadesCadastrarComponent,
     EspecialidadesEditarComponent,
   ],

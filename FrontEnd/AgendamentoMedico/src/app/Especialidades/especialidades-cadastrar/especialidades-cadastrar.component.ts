@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { IEspecialidadeDto } from 'src/app/interfaces/IEspecialidadeDto';
+import { ToastrService } from 'ngx-toastr';
 
 
   @Component({
@@ -22,27 +23,32 @@ import { IEspecialidadeDto } from 'src/app/interfaces/IEspecialidadeDto';
         descricao: '',
         ativo: true
       }
-
-      this.getEspecialidades();
+  this.getEspecialidades();
 }
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
     this.getEspecialidades();
   }
 
 
-  adicionarEspecialidade(){
-    if(this.especialidade.idEspecialidade == 0){
-    this.http.post('https://localhost:7026/api/Especialidade', this.especialidade)
-    .subscribe(() => {
-      this.router.navigate(['especialidadelista']);
-      });
-    }else {
-      this.http.patch(`https://localhost:7026/api/Especialidade/${this.especialidade.idEspecialidade}`, this.especialidade)
-      .subscribe(() => {
+      adicionarEspecialidade(){
+        if(this.validarInfo()) {
+        if(this.especialidade.idEspecialidade == 0){
+        this.http.post('https://localhost:7026/api/Especialidade', this.especialidade)
+        .subscribe(() => {
           this.router.navigate(['especialidadelista']);
+          });
+        }else {
+          this.http.patch(`https://localhost:7026/api/Especialidade/${this.especialidade.idEspecialidade}`, this.especialidade)
+          .subscribe(() => {
+            this.router.navigate(['especialidadelista']);
+          });
+        }
+      }else {
+        this.toastr.warning('Preencha o campo: Nome da especialidade.', 'Campo vazio', {
+          timeOut: 3000,
       });
-  }
+    }
   }
 
   editarEspecialidade(id: number){
@@ -71,4 +77,11 @@ import { IEspecialidadeDto } from 'src/app/interfaces/IEspecialidadeDto';
       }
     });
   }
+  validarInfo(): boolean {
+    if (this.especialidade.nome == '') {
+      return false;
+    }
+    return true;
+  }
 }
+
