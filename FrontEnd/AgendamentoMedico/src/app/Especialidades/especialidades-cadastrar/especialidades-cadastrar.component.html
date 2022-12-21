@@ -1,0 +1,44 @@
+<form>
+  <h1>Cadastro de especialidades</h1>
+  <div class="container">
+
+    <div class="col-md-4">
+      <label for="nomeEspecialidade" class="col-sm-4 col-form-label">Especialidade: </label>
+        <input type="text" class="form-control" id="nomeEspecialidade" [(ngModel)]="especialidade.nome" name="nomeEspecialidade">
+    </div>
+
+    <div class="col-md-4">
+    <label for="descricaoEspecialidade" class="col-sm-4 col-form-label">Descrição: </label>
+    <input type="text" class="form-control" id="descricaoEspecialidade" [(ngModel)]="especialidade.descricao" name="descricaoEspecialidade">
+     </div>
+     <button class="btn btn-success col-mr-4" type="submit" (click)="adicionarEspecialidade()">Salvar</button>
+    </div>
+  </form>
+
+  <div class="form-inline mb-2">
+    <div class="form-grou br-2">
+        <label class="mr-2"></label>
+        <input type="text" class="form-control mr-2" placeholder="buscar">
+        <button class="btn btn-success mr-3" type="submit" (click)="buscarEspecialidade()">Buscar</button>
+    </div>
+</div>
+
+<table class= "table table-striped">
+    <thead class="thead-dark">
+       <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Ativo</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let especialidade">
+            <td>{{especialidade.nome}}</td>
+            <td>{{especialidade.descricao}}</td>
+            <td>{{especialidade.ativo}}</td>
+            <td>
+                <!--<button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade(especialidade.idEspecialidade);">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerEspecialidade(especialidade.idEspecialidade);">Excluir</button>-->
+            </td>
+        </tr>
+    </tbody>

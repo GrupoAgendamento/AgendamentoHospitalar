@@ -48,7 +48,7 @@ export class HospitalListaComponent {
             this.getHospitais();
         });
     }
-    
+
     editarHospital(id: number) {
         this.router.navigate([`hospitalcadastrar/${id}`]);
     }

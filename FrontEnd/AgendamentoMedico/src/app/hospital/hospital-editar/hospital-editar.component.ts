@@ -14,7 +14,7 @@ export class HospitalEditarComponent implements OnInit {
     hospital!: IHospitalDto
 
     constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
-        
+
     }
 
     ngOnInit(): void {
