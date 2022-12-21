@@ -8,7 +8,6 @@
             type="text"
             class="form-control mr-2"
             placeholder="buscar"
-            [(ngModel)]="buscaNome"
             >
     </div>
 </div>
@@ -29,7 +28,7 @@
        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let hospital of hospitalLista | filter:buscaNome">
+        <tr *ngFor="let hospital of hospitalLista">
             <td>{{hospital.nome}}</td>
             <td>{{hospital.cnpj}}</td>
             <td>{{hospital.endereco}}</td>
