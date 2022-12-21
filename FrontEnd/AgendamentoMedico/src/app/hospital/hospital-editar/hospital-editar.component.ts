@@ -26,7 +26,7 @@ export class HospitalEditarComponent implements OnInit {
             telefone: '',
             cnes: '',
             ativo: true
-          }
+        }
     }
 
     salvarHospital() {
