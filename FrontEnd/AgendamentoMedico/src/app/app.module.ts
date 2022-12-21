@@ -11,13 +11,17 @@ import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cad
 import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
 import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
+import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
+import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 import { NavComponent } from './Nav/Nav.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     BeneficiarioListaComponent,
     BeneficiarioCadastrarComponent,
+    ProfissionalEditarComponent,
+    ProfissionalListaComponent,
     HospitalListaComponent,
     HospitalEditarComponent,
     NavComponent

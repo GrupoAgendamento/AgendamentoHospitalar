@@ -1,0 +1,41 @@
+<h2>Profissionais</h2>
+<hr />
+
+<div  class="form-inline mb-2">
+    <div class="form-grou br-2">
+        <label class="mr-2"></label>
+        <input
+            type="text"
+            class="form-control mr-2"
+            placeholder="buscar"
+            >
+    </div>
+</div>
+
+<button (click)="adicionarProfissional();" class="input-group-text">
+    <i class="material-icons">Cadastrar novo profissional</i>
+</button>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+       <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>Ativo</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let profissional of profissionalLista">
+            <td>{{profissional.nome}}</td>
+            <td>{{profissional.endereco}}</td>
+            <td>{{profissional.telefone}}</td>
+            <td>{{profissional.ativo}}</td>
+            <td>
+                <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="detalharProfissional(profissional.idProfissional);">Ver</button>
+                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarProfissional(profissional.idProfissional);">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerProfissional(profissional.idProfissional);">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

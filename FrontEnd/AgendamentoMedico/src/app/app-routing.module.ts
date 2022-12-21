@@ -4,6 +4,8 @@ import { BeneficiarioCadastrarComponent} from './Beneficiarios/Beneficiario-Cada
 import { BeneficiarioListaComponent} from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component'
 import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
+import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
+import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 
 const routes: Routes = [
   { path: 'beneficiariocadastrar', component: BeneficiarioCadastrarComponent },
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'hospitalcadastrar', component: HospitalEditarComponent },
   { path: 'hospitallista', component: HospitalListaComponent },
   { path: 'hospitalcadastrar/:id', component: HospitalEditarComponent },
+  { path: 'profissionalcadastrar', component: ProfissionalEditarComponent },
+  { path: 'profissionallista', component: ProfissionalListaComponent },
 ];
 
 @NgModule({
