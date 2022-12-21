@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Beneficiario } from './Beneficiario';
+import { IBeneficiarioDTO } from 'src/app/interfaces/IBeneficiarioDTO';
 
 @Component({
   selector: 'app-Beneficiario-Cadastrar',
@@ -11,18 +11,27 @@ import { Beneficiario } from './Beneficiario';
 export class BeneficiarioCadastrarComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
-  beneficiario: Beneficiario = new Beneficiario();
+  beneficiario!: IBeneficiarioDTO;
   mensagem: string = '';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.beneficiario = new Beneficiario();
+    this.beneficiario = {
+      nome: '',
+      cpf: '',
+      telefone: '',
+      email: '',
+      endereco: '',
+      numeroCarteirinha: '',
+      ativo: false,
+      senha: '',
+    }
   }
 
   Salvar(){
-    this.http.post('https://localhost:7088/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
-      this.beneficiario = new Beneficiario();
+    this.http.post('https://localhost:7026/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
+      this.beneficiario = {nome: '', cpf: '', telefone: '', email: '', endereco: '', numeroCarteirinha: '', ativo: false, senha: ''}
       this.mensagem = 'Beneficiário cadastrado com sucesso!';
       setTimeout(() => {
         this.mensagem = '';

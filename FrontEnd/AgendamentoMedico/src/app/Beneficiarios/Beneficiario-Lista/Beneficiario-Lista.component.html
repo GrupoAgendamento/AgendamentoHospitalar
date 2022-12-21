@@ -8,7 +8,7 @@
             type="text"
             class="form-control mr-2"
             placeholder="buscar"
-
+            [(ngModel)]="filtroLista"
             >
     </div>
 </div>
@@ -26,7 +26,7 @@
        </tr>
     </thead>
     <tbody *ngIf="beneficiarios && beneficiarios.length">
-        <tr *ngFor="let beneficiario of beneficiarios">
+        <tr *ngFor="let beneficiario of beneficiariosFiltrados">
             <td>{{beneficiario.idBeneficiario}}</td>
             <td>{{beneficiario.nome}}</td>
             <td>{{beneficiario.cpf}}</td>
@@ -35,8 +35,8 @@
             <td>{{beneficiario.numeroCarteirinha}}</td>
             <td>{{beneficiario.email}}</td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm mr-1">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ms-1">Excluir</button>
+              <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarBeneficiario(beneficiario.idBeneficiario)">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ms-1" (click)="excluirBeneficiario(beneficiario.idBeneficiario)">Excluir</button>
             </td>
         </tr>
     </tbody>
