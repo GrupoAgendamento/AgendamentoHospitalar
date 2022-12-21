@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'profissionallista', component: ProfissionalListaComponent },
   { path: 'agendamentocadastrar', component: AgendarComponent },
   { path: 'agendamentoconsultar', component: ConsultarComponent },
+  { path: 'profissionalcadastrar/:id', component: ProfissionalEditarComponent },
 ];
 
 @NgModule({
