@@ -89,6 +89,50 @@ namespace ProjetoAgendamentoHospitalar.Controllers
                 $"Erro ao tentar recuperar configuração de agendamento. Erro: {ex}");
             }
         }
-       
+
+       [HttpPost]
+       public async Task<ActionResult> Post(AgendamentoConfiguracao model)
+       {
+           try
+           {
+               var agendamentoConfiguracao = await _agendamentoConfiguracaoService.AddAgendamentoConfiguracao(model);
+                if(agendamentoConfiguracao == null) return BadRequest("Erro ao tentar adicionar configuração de agendamento");
+                return Ok(agendamentoConfiguracao);
+           }catch(Exception ex)
+           {
+               return this.StatusCode(StatusCodes.Status500InternalServerError,
+               $"Erro ao tentar salvar configuração de agendamento. Erro: {ex}");
+           }
+       }
+
+         [HttpPut("{agendaConfiguracaoId}")]
+        public async Task<ActionResult> Put(int idConfiguracao, AgendamentoConfiguracao model)
+        {
+            try
+            {
+                var agendamentoConfiguracao = await _agendamentoConfiguracaoService.UpdateAgendamentoConfiguracao(model, idConfiguracao);
+                if(agendamentoConfiguracao == null) return BadRequest("Erro ao tentar atualizar configuração de agendamento");
+                return Ok(agendamentoConfiguracao);
+            }catch(Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar atualizar configuração de agendamento. Erro: {ex}");
+            }
+        }
+
+        [HttpDelete("{agendaConfiguracaoId}")]
+        public async Task<ActionResult> Delete(int idConfiguracao)
+        {
+            try
+            {
+                var agendamentoConfiguracao = await _agendamentoConfiguracaoService.DeleteAgendamentoConfiguracao(idConfiguracao);
+                if(agendamentoConfiguracao == null) return BadRequest("Erro ao tentar deletar configuração de agendamento");
+                return Ok(agendamentoConfiguracao);
+            }catch(Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar deletar configuração de agendamento. Erro: {ex}");
+            }
+        }
     }
 }

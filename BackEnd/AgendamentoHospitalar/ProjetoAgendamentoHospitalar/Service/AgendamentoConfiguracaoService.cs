@@ -127,5 +127,56 @@ namespace ProjetoAgendamentoHospitalar.Service
                 throw new Exception($"Erro: {ex.Message}");
             }
         }
+
+        public async Task<AgendamentoConfiguracao> AddConfiguracaoAgendamento(AgendamentoConfiguracao model)
+        {
+            try
+            {
+                _geralPersist.Add<AgendamentoConfiguracao>(model);
+                if (await _geralPersist.SaveChangesAsync())
+                {
+                    return await _agendamentoConfiguracaoPersist.GetAgendamentoConfiguracaoAsyncById(model.IdConfiguracao);
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
+        }
+
+        public async Task<bool> DeleteConfiguracaoAgendamento(int idConfiguracao)
+        {
+            try
+            {
+                var agendamentoConfiguracao = await _agendamentoConfiguracaoPersist.GetAgendamentoConfiguracaoAsyncById(idConfiguracao);
+                if(agendamentoConfiguracao == null) throw new Exception("Agendamento Configuração não encontrado");
+                _geralPersist.Delete<AgendamentoConfiguracao>(agendamentoConfiguracao);
+                return await _geralPersist.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
+        }
+
+        public async Task<AgendamentoConfiguracao> UpdateConfiguracaoAgendamento(AgendamentoConfiguracao model, int idConfiguracao)
+        {
+            try
+            {
+                var agendamentoConfiguracao = _agendamentoConfiguracaoPersist.GetAgendamentoConfiguracaoAsyncById(idConfiguracao);
+                if(agendamentoConfiguracao == null) return null;
+                model.IdConfiguracao = idConfiguracao;
+                _geralPersist.Update<AgendamentoConfiguracao>(model);
+                if(await _geralPersist.SaveChangesAsync())
+                {
+                    return await _agendamentoConfiguracaoPersist.GetAgendamentoConfiguracaoAsyncById(idConfiguracao);
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
+        }
     }
+
+
 }
