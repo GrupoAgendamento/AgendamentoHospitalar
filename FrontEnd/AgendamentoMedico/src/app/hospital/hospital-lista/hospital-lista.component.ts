@@ -3,6 +3,7 @@ import { IHospitalDto } from "src/app/interfaces/IHospitalDto";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
     selector: 'app-hospital-lista',
@@ -13,7 +14,7 @@ import { map } from 'rxjs';
 export class HospitalListaComponent {
     hospitalLista: IHospitalDto[] = [];
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
         this.getHospitais();
     }
 
@@ -36,6 +37,10 @@ export class HospitalListaComponent {
     removerHospital(id: number) {
         this.http.delete(`https://localhost:7026/api/Hospital/${id}`)
         .subscribe(() => {
+            confirm(`Deseja realmente excluir o hospital?`);
+            this.toastr.success('Hospital exclúido com sucesso.', 'Sucesso!', {
+                timeOut: 3000
+            })
             this.getHospitais();
         });
     }

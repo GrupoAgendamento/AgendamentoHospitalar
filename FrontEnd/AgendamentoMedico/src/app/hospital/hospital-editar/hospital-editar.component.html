@@ -1,42 +1,69 @@
 <form>
-    <h1>Cadastro de hospitais</h1>
-    <div class="container">
-      <div class="mb-3 row">
-        <label for="nomeHospital" class="col-sm-4 col-form-label">Nome do hospital</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="nomeHospital" [(ngModel)]="hospital.nome" name="nomeHospital">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="CNPJ" class="col-sm-4 col-form-label">CNPJ</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="CNPJ" [(ngModel)]="hospital.cnpj" name="CNPJ">
-        </div>
-      </div>
-  
-      <div class="mb-3 row">
-        <label for="endereco" class="col-sm-4 col-form-label">Endereço</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="endereco" [(ngModel)]="hospital.endereco" name="endereco">
-        </div>
-      </div>
-  
-      <div class="mb-3 row">
-        <label for="telefone" class="col-sm-4 col-form-label">Telefone</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="telefone" [(ngModel)]="hospital.telefone" name="telefone">
-        </div>
-      </div>
-  
-      <div class="mb-3 row">
-        <label for="CNES" class="col-sm-4 col-form-label">CNES</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="CNES" [(ngModel)]="hospital.cnes" name="CNES">
-        </div>
-      </div>
-  
-      <div class="mb-3 row">
-        <button (click)="salvarHospital()">Salvar</button>
-      </div>
+  <h1>Cadastrar hospitais</h1>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="nomeHospital"
+        >Nome do hospital</label
+      >
+        <input
+          type="text"
+          class="form-control"
+          id="nomeHospital"
+          [(ngModel)]="hospital.nome"
+          name="nomeHospital"
+          placeholder="Hospital Albert Einstein"
+        />
     </div>
-  </form>
+      <div class="form-group col-md-6">
+        <label for="CNPJ">CNPJ</label>
+          <input
+            type="text"
+            class="form-control"
+            id="CNPJ"
+            [(ngModel)]="hospital.cnpj"
+            name="CNPJ"
+            placeholder="00.000.111/0001-00"
+          />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="endereco">Endereço</label>
+        <input
+          type="text"
+          class="form-control"
+          id="endereco"
+          [(ngModel)]="hospital.endereco"
+          name="endereco"
+          placeholder="Av. Paulista, 1500"
+        />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="telefone">Telefone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="telefone"
+          [(ngModel)]="hospital.telefone"
+          name="telefone"
+          placeholder="9999-9999"
+        />
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label for="CNES">CNES</label>
+        <input
+          type="text"
+          class="form-control"
+          id="CNES"
+          [(ngModel)]="hospital.cnes"
+          name="CNES"
+          placeholder="001.001.001"
+        />
+  </div>
+  <div class="btn-container">
+    <button type="submit" class="btn btn-primary" (click)="salvarHospital()">Cadastrar</button>
+  </div>
+</form>

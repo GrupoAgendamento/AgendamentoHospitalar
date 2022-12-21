@@ -1,5 +1,4 @@
 export interface IBeneficiarioDto {
-    idBeneficiario: number,
     nome: string,
     cpf: string,
     telefone?: string,
@@ -7,4 +6,5 @@ export interface IBeneficiarioDto {
     endereco?: string,
     numeroCarteirinha: string,
     senha: string,
+    ativo: boolean
 }

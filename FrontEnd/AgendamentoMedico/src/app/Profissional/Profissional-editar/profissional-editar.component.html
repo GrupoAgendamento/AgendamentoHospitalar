@@ -1,31 +1,46 @@
-<form>
-  <h1>Cadastro de profissionais</h1>
-  <div class="container">
-
-
-    <div class="mb-3 row">
-      <label for="nomeProfissional" class="col-sm-4 col-form-label">Nome do profissional</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" id="nomeProfissional" [(ngModel)]="profissional.nome" name="nomeProfissional">
+<form class="form-profissional">
+  <h1>Cadastrar profissional</h1>
+    <div class="form-group">
+      <label for="nomeProfissional" class="col-12 col-form-label"
+        >Nome do profissional</label
+      >
+      <div class="col-12">
+        <input
+          type="text"
+          class="form-control"
+          id="nomeProfissional"
+          [(ngModel)]="profissional.nome"
+          name="nomeProfissional"
+          placeholder="Maria Silva"
+        />
       </div>
     </div>
-
-    <div class="mb-3 row">
-      <label for="endereco" class="col-sm-4 col-form-label">Endereço</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" id="endereco" [(ngModel)]="profissional.endereco" name="endereco">
+    <div class="form-group">
+      <label for="endereco" class="col-12 col-form-label">Endereço</label>
+      <div class="col-12">
+        <input
+          type="text"
+          class="form-control"
+          id="endereco"
+          [(ngModel)]="profissional.endereco"
+          name="endereco"
+          placeholder="Av. Paulista, 1500"
+        />
       </div>
     </div>
-
-    <div class="mb-3 row">
-      <label for="telefone" class="col-sm-4 col-form-label">Telefone</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" id="telefone" [(ngModel)]="profissional.telefone" name="telefone">
+    <div class="form-group">
+      <label for="telefone" class="col-12 col-form-label">Telefone</label>
+      <div class="col-12">
+        <input
+          type="text"
+          class="form-control"
+          id="telefone"
+          [(ngModel)]="profissional.telefone"
+          name="telefone"
+          placeholder="9999-9999"
+        />
       </div>
     </div>
-
-    <div class="mb-3 row">
-      <button (click)="salvarProfissional()">Salvar</button>
-    </div>
-  </div>
+    <button type="submit" class="btn btn-primary" (click)="salvarProfissional()">Salvar</button>
 </form>
+

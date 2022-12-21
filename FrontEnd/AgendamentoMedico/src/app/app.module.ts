@@ -7,8 +7,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-editar/Beneficiario-editar.component';
-import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-lista/Beneficiario-lista.component';
+import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-Editar.component';
+import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
 import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
@@ -16,18 +16,21 @@ import { ProfissionalListaComponent } from './Profissional/Profissional-lista/pr
 import { NavComponent } from './Nav/Nav.component';
 // import { AgendarComponent } from './Agendamento/agendar/agendar.component';
 import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
+import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BeneficiarioListaComponent,
     BeneficiarioEditarComponent,
+    BeneficiarioCadastrarComponent,
     ProfissionalEditarComponent,
     ProfissionalListaComponent,
     HospitalListaComponent,
     HospitalEditarComponent,
     NavComponent,
     // AgendarComponent,
+    BeneficiarioCadastrarComponent,
     ConsultarComponent,
   ],
   imports: [

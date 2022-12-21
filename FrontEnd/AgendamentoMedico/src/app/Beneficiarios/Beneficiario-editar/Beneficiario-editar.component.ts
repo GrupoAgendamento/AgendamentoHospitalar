@@ -1,82 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { IBeneficiarioDto } from 'src/app/interfaces/IBeneficiarioDto';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-beneficiario-editar',
-  templateUrl: './Beneficiario-editar.component.html',
-  styleUrls: ['./Beneficiario-editar.component.css'],
+  selector: 'app-Beneficiario-Editar',
+  templateUrl: './Beneficiario-Editar.component.html',
+  styleUrls: ['./Beneficiario-Editar.component.css']
 })
 export class BeneficiarioEditarComponent implements OnInit {
-  beneficiario!: IBeneficiarioDto;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private toastr: ToastrService
-  ) {}
+  beneficiario!: any;
+  idBeneficiario!: number;
 
-  ngOnInit(): void {
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+    ) {
+      this.route.paramMap.subscribe((params) => {
+        this.idBeneficiario = Number(params.get('id'));
+     });
+
+    }
+
+  ngOnInit() {
+    this.getBeneficiarioById(this.idBeneficiario);
     this.beneficiario = {
-      idBeneficiario: 0,
       nome: '',
       cpf: '',
       telefone: '',
       email: '',
       endereco: '',
       numeroCarteirinha: '',
+      ativo: false,
       senha: '',
-    };
-  }
-
-  salvarBeneficiario() {
-    if (this.validarInfo()) {
-      if (this.beneficiario.idBeneficiario == 0) {
-        this.http
-          .post('https://localhost:7026/api/Beneficiario', this.beneficiario)
-          .subscribe(() => {
-            this.router.navigate(['beneficiariolista']);
-            this.toastr.success(
-              'Beneficiário cadastrado com sucesso.',
-              'Sucesso!',
-              {
-                timeOut: 3000,
-              }
-            );
-          });
-      } else {
-        this.http
-          .patch(
-            `https://localhost:7026/api/Beneficiario/${this.beneficiario.idBeneficiario}`,
-            this.beneficiario
-          )
-          .subscribe(() => {
-            this.router.navigate(['beneficiariolista']);
-          });
-      }
-    } else {
-      this.toastr.warning(
-        'Preencha todos os campos!',
-        'Campos vazios',
-        {
-          timeOut: 3000,
-        }
-      );
     }
   }
 
-  validarInfo(): boolean {
-    if (
-      this.beneficiario.nome == '' ||
-      this.beneficiario.cpf == '' ||
-      this.beneficiario.numeroCarteirinha == '' ||
-      this.beneficiario.email == '' ||
-      this.beneficiario.senha == ''
-    ) {
-      return false;
-    }
-    return true;
+  public getBeneficiarioById(id: number){
+    this.http.get('https://localhost:7026/api/Beneficiario/' + id).subscribe(
+      response => {this.beneficiario = response; },
+      error => console.log(error)
+    );
   }
+
+  public editarBeneficiario(){
+    this.http.put('https://localhost:7026/api/Beneficiario/' + this.idBeneficiario, this.beneficiario).subscribe(
+      response => {this.router.navigate(['/beneficiariolista']); },
+      error => console.log(error)
+    );
+  }
+
 }

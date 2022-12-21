@@ -26,7 +26,7 @@
        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let beneficiario of beneficiarioLista">
+        <tr *ngFor="let beneficiario of beneficiarios">
             <td>{{beneficiario.idBeneficiario}}</td>
             <td>{{beneficiario.nome}}</td>
             <td>{{beneficiario.cpf}}</td>
@@ -36,7 +36,7 @@
             <td>{{beneficiario.email}}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarBeneficiario(beneficiario.idBeneficiario)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerBeneficiario(beneficiario.idBeneficiario)">Excluir</button>
+                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="excluirBeneficiario(beneficiario.idBeneficiario)">Excluir</button>
             </td>
         </tr>
     </tbody>
