@@ -110,5 +110,58 @@ namespace ProjetoAgendamentoHospitalar.Service
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<Agendamento> AddAgendamento(Agendamento model)
+        {
+            try
+            {
+                _geralPersist.Add<Agendamento>(model);
+                if (await _geralPersist.SaveChangesAsync())
+                {
+                    return model;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<Agendamento> UpdateAgendamento(Agendamento model, int agendamentoId)
+        {
+            try
+            {
+                var agendamento = await _agendamentoPersist.GetAgendamentoAsyncById(model.IdAgendamento);
+                if (agendamento == null) return null;
+                model.IdAgendamento = agendamentoId;
+                _geralPersist.Update(model);
+
+                if (await _geralPersist.SaveChangesAsync())
+                {
+                    return await _agendamentoPersist.GetAgendamentoAsyncById(model.IdHospital);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteAgendamento(int idAgendamento)
+        {
+            try
+            {
+                var agendamento = await _agendamentoPersist.GetAgendamentoAsyncById(idAgendamento);
+                if (agendamento == null) throw new Exception("Agendamento não encontrado");
+                _geralPersist.Delete(agendamento);
+                return await _geralPersist.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

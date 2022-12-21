@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using ProjetoAgendamentoHospitalar.Models;
+using ProjetoAgendamentoHospitalar.Service;
 using ProjetoAgendamentoHospitalar.Service.Interfaces;
 
 namespace ProjetoAgendamentoHospitalar.Controllers
@@ -15,7 +17,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
         {
             _agendamentoService = agendamentoService;
         }
-
+        //consultar
         [HttpGet]
         public async Task<ActionResult<Agendamento>> Get()
         {
@@ -111,7 +113,67 @@ namespace ProjetoAgendamentoHospitalar.Controllers
                 $"Erro ao tentar recuperar eventos. Erro: {ex}");
             }
         }
+        //agendar
+        [HttpPost]
+        [Route("AddPost")]
+        public async Task<IActionResult> AddPost([FromBody] Agendamento model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var postId = await _agendamentoService.AddAgendamento(model);
+                    if (postId != null)
+                    {
+                        return Ok(postId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
 
-        
+                    return BadRequest();
+                }
+
+            }
+
+            return BadRequest();
+        }
+        //atualizar
+        [HttpPut("{agendamentoId}")]
+        public async Task<ActionResult<Agendamento>> Put(int agendamentoId, Agendamento model)
+        {
+            try
+            {
+                var agendamento = await _agendamentoService.UpdateAgendamento(model, agendamentoId);
+                if (agendamento == null) return BadRequest("Erro ao tentar atualizar agendamento");
+                return Ok(agendamento);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar atualizar agendamento. Erro: {ex}");
+            }
+        }
+
+        //deletar
+        [HttpDelete("{agendamentoId}")]
+        public async Task<ActionResult<Agendamento>> Delete(int agendamentoId)
+        {
+            try
+            {
+                var agendamento = await _agendamentoService.DeleteAgendamento(agendamentoId);
+                if (agendamento == null) return BadRequest("Erro ao tentar deletar hospital");
+                return Ok(agendamento);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar deletar hospital. Erro: {ex}");
+            }
+        }
     }
 }
