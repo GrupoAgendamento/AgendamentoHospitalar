@@ -1,1 +1,14 @@
-<p>consultar works!</p>
+<h2>Lista de agendamentos</h2>
+<form class="row g-3 needs-validation" novalidate>
+  <!--Hospital-->
+  <div class="col-md-4">
+    <label for="cpfAgendamento" class="form-label">CPF:</label>
+    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="consultar.cpf" placeholder="Digite o CPF do paciente" required id="cpfAgendamento">
+    <div class="invalid-feedback">
+      É obrigatório informar o CPF
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success mt-3" type="submit" (click)="Mostrar()">Buscar</button>
+    </div>
+  </div>
+  </form>
