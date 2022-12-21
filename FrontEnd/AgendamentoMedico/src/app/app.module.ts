@@ -12,10 +12,12 @@ import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar
 import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
+import { HospitalCadastrarComponent } from './hospital/hospital-cadastrar/hospital-cadastrar.component';
 import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
-import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
+import { ProfissionalCadastrarComponent } from './Profissional/Profissional-cadastrar/profissional-cadastrar.component';
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
-import { AgendarComponent } from './Agendamento/agendar/agendar.component';
+import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
+// import { AgendarComponent } from './Agendamento/agendar/agendar.component';
 import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
 
 @NgModule({
@@ -25,9 +27,11 @@ import { ConsultarComponent } from './Agendamento/consultar/consultar.component'
     BeneficiarioListaComponent,
     BeneficiarioEditarComponent,
     BeneficiarioCadastrarComponent,
-    ProfissionalEditarComponent,
+    ProfissionalCadastrarComponent,
     ProfissionalListaComponent,
+    ProfissionalEditarComponent,
     HospitalListaComponent,
+    HospitalCadastrarComponent,
     HospitalEditarComponent,
     NavComponent,
     // AgendarComponent,

@@ -25,13 +25,9 @@
         <th>Opções</th>
        </tr>
     </thead>
-<<<<<<< HEAD
-    <tbody>
-        <tr *ngFor="let beneficiario of beneficiarios">
-=======
+
     <tbody *ngIf="beneficiarios && beneficiarios.length">
         <tr *ngFor="let beneficiario of beneficiariosFiltrados">
->>>>>>> 6a4611a84ae4c30be3e56cf432d857008adefbf2
             <td>{{beneficiario.idBeneficiario}}</td>
             <td>{{beneficiario.nome}}</td>
             <td>{{beneficiario.cpf}}</td>
@@ -40,13 +36,8 @@
             <td>{{beneficiario.numeroCarteirinha}}</td>
             <td>{{beneficiario.email}}</td>
             <td>
-<<<<<<< HEAD
-                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarBeneficiario(beneficiario.idBeneficiario)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="excluirBeneficiario(beneficiario.idBeneficiario)">Excluir</button>
-=======
               <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarBeneficiario(beneficiario.idBeneficiario)">Editar</button>
               <button type="button" class="btn btn-danger btn-sm ms-1" (click)="excluirBeneficiario(beneficiario.idBeneficiario)">Excluir</button>
->>>>>>> 6a4611a84ae4c30be3e56cf432d857008adefbf2
             </td>
         </tr>
     </tbody>

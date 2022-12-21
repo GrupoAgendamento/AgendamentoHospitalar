@@ -52,8 +52,7 @@ export class ProfissionalListaComponent {
     removerProfissional(id: number) {
         this.http.delete(`https://localhost:7026/api/Profissional/${id}`)
         .subscribe(() => {
-            confirm(`Deseja realmente excluir o hospital?`);
-            this.toastr.success('Hospital exclúido com sucesso.', 'Sucesso!', {
+            this.toastr.success('Profissional excluído com sucesso.', 'Sucesso!', {
                 timeOut: 3000
             })
             this.getProfissionais();
@@ -61,7 +60,7 @@ export class ProfissionalListaComponent {
     }
 
     editarProfissional(id: number) {
-        this.router.navigate([`profissionalcadastrar/${id}`]);
+        this.router.navigate([`profissionaleditar/${id}`]);
     }
 
     adicionarProfissional(){
