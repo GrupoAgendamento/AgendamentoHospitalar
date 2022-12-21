@@ -4,7 +4,7 @@
   <!--Hospital-->
   <div class="col-md-4">
     <label for="agendamentoHospital" class="form-label">Digite o nome do hospital:</label>
-    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.idHospital" placeholder="Hospital" required id="agendamentoHospital">
+    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.idHospital" placeholder="Hospital" required id="agendamentoHospital">
     <div class="invalid-feedback">
       É obrigatório informar o nome do hospital.
     </div>
@@ -12,7 +12,7 @@
   <!--Especialidade-->
   <div class="col-md-4">
     <label for="agendamentoEspecialidade" class="form-label">Digite o nome da especialidade desejada:</label>
-    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.idEspecialidade" placeholder="Especialidade médica" required id="agendamentoEspecialidade">
+    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.idEspecialidade" placeholder="Especialidade médica" required id="agendamentoEspecialidade">
     <div class="invalid-feedback">
       É obrigatório informar a especialidade médica.
     </div>
@@ -20,7 +20,7 @@
   <!--Médico-->
   <div class="col-md-4">
     <label for="agendamentoProfissional" class="form-label">Digite o nome do profissional:</label>
-    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.idProfissional" placeholder="Profissional" required id="agendamentoProfissional">
+    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.idProfissional" placeholder="Profissional" required id="agendamentoProfissional">
     <div class="invalid-feedback">
       É obrigatório informar o nome do hospital.
     </div>
@@ -28,7 +28,7 @@
   <!--Data-->
   <div class="col-md-4">
     <label for="agendamentoData" class="form-label">Selecione a data para agendamento:</label>
-    <input type="datetime-local" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.dataHoraAgendamento" required id="agendamentoData">
+    <input type="datetime-local" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.dataAgendamento" required id="agendamentoData">
     <div class="invalid-feedback">
       É obrigatório informar a data para agendamento.
     </div>

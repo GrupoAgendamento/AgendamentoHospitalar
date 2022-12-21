@@ -1,31 +1,50 @@
-import { Consultar } from './Consultar';
+import { Component } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { IAgendamentoDto } from 'src/app/interfaces/IAgendamentoDto';
 
 @Component({
-  selector: 'app-agendar',
-  templateUrl: './consultar.component.html',
-  styleUrls: ['./consultar.component.css']
+    selector: 'app-consultar',
+    templateUrl: './consultar.component.html',
+    styleUrls: ['./consultar.component.css']
 })
-export class ConsultarComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({});
-  consultar: Consultar = new Consultar();
-  mensagem: string = '';
+export class ConsultarComponent {
+    agendamentoLista: IAgendamentoDto[] = [];
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) {
+        this.getAgendamentos();
+    }
 
-  ngOnInit() {
-    this.consultar = new Consultar();
-  }
+    getAgendamentos() {
+        this.agendamentoLista = [];
+        this.http.get('https://localhost:7026/api/Agendamento')
+        .pipe(
+            map((response: any) => {
+                return Object.values(response);
+            })
+        )
+        .subscribe((data) => {
+            for(let index = 0; index < data.length; index++) {
+                let json: any = data[index];
+                this.agendamentoLista.push(json as IAgendamentoDto);
+            }
+        });
+    }
 
-  allConsultas: Consultar[] = [];
-  //consulta = Consultar[] = [];
-  baseApiUrl = 'https://localhost:7026/api/Agendamento';
+    removerAgendamento(id: number) {
+        this.http.delete(`https://localhost:7026/api/Agendamento/${id}`)
+        .subscribe(() => {
+            this.getAgendamentos();
+        });
+    }
 
-  Mostrar(){
+    editarAgendamento(id: number) {
+        this.router.navigate([`agendamento/${id}`]);
+    }
 
-  }
-
+    adicionarAgendamento(){
+        this.router.navigate([`agendamento`]);
+    }
 }

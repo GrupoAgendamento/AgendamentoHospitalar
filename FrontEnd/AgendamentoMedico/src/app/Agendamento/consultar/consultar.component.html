@@ -1,14 +1,40 @@
 <h2>Lista de agendamentos</h2>
-<form class="row g-3 needs-validation" novalidate>
-  <!--Hospital-->
-  <div class="col-md-4">
-    <label for="cpfAgendamento" class="form-label">CPF:</label>
-    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="consultar.cpf" placeholder="Digite o CPF do paciente" required id="cpfAgendamento">
-    <div class="invalid-feedback">
-      É obrigatório informar o CPF
+<hr />
+
+<div class="form-inline mb-2">
+    <div class="form-grou br-2">
+        <label class="mr-2"></label>
+        <input
+            type="text"
+            class="form-control mr-2"
+            placeholder="buscar"
+            >
     </div>
-    <div class="col-12">
-      <button class="btn btn-success mt-3" type="submit" (click)="Mostrar()">Buscar</button>
-    </div>
-  </div>
-  </form>
+</div>
+
+<button (click)="getAgendamentos();" class="input-group-text">
+    <i class="material-icons">Cadastrar novo hospital</i>
+</button>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+       <tr>
+        <th>Hospital</th>
+        <th>Especialidade</th>
+        <th>Profissional</th>
+        <th>Data agendada</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let agendamento of agendamentoLista">
+            <td>{{agendamento.idHospital}}</td>
+            <td>{{agendamento.idEspecialidade}}</td>
+            <td>{{agendamento.idProfissional}}</td>
+            <td>{{agendamento.dataAgendamento}}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarAgendamento(agendamento.idAgendamento);">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerAgendamento(agendamento.idAgendamento);">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
