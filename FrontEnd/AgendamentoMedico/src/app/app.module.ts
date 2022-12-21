@@ -7,8 +7,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
-import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
+import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-editar/Beneficiario-editar.component';
+import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-lista/Beneficiario-lista.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
 import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-editar.component';
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
@@ -21,7 +21,7 @@ import { ConsultarComponent } from './Agendamento/consultar/consultar.component'
   declarations: [
     AppComponent,
     BeneficiarioListaComponent,
-    BeneficiarioCadastrarComponent,
+    BeneficiarioEditarComponent,
     ProfissionalEditarComponent,
     ProfissionalListaComponent,
     HospitalListaComponent,

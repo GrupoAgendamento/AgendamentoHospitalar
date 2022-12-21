@@ -33,15 +33,6 @@ export class ProfissionalListaComponent {
         });
     }
 
-    detalharProfissional(id: number) {
-        for(let i = 0; i < this.profissionalLista.length; i++) {
-          if(id == this.profissionalLista[i].idProfissional) {
-            this.router.navigate([`profissionaldetalhe/${id}`]);
-            break;
-          }
-        }
-    }
-
     removerProfissional(id: number) {
         this.http.delete(`https://localhost:7026/api/Profissional/${id}`)
         .subscribe(() => {
