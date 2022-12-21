@@ -8,6 +8,7 @@
             type="text"
             class="form-control mr-2"
             placeholder="buscar"
+            [(ngModel)]="filtroLista"
             >
     </div>
 </div>
@@ -23,10 +24,11 @@
         <th>Endereço</th>
         <th>Telefone</th>
         <th>Ativo</th>
+        <th>Opções</th>
        </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let profissional of profissionalLista">
+    <tbody *ngIf="profissionalLista && profissionalLista.length">
+        <tr *ngFor="let profissional of profissionalFiltrados">
             <td>{{profissional.nome}}</td>
             <td>{{profissional.endereco}}</td>
             <td>{{profissional.telefone}}</td>

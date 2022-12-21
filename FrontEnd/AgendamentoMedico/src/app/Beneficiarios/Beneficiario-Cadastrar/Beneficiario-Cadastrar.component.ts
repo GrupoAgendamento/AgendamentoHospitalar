@@ -1,20 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IBeneficiarioDto } from '../../interfaces/IBeneficiarioDto';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-Beneficiario-Cadastrar',
   templateUrl: './Beneficiario-Cadastrar.component.html',
-  styleUrls: ['./Beneficiario-Cadastrar.component.css'],
+  styleUrls: ['./Beneficiario-Cadastrar.component.css']
 })
 export class BeneficiarioCadastrarComponent implements OnInit {
+
   form: FormGroup = new FormGroup({});
   beneficiario!: IBeneficiarioDto;
   mensagem: string = '';
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.beneficiario = {
@@ -26,26 +27,20 @@ export class BeneficiarioCadastrarComponent implements OnInit {
       numeroCarteirinha: '',
       ativo: false,
       senha: '',
-    };
+    }
   }
 
-  Salvar() {
-    this.http
-      .post('https://localhost:7026/api/Beneficiario', this.beneficiario)
-      .subscribe((response: any) => {
-        this.beneficiario = {
-          nome: '',
-          cpf: '',
-          telefone: '',
-          email: '',
-          endereco: '',
-          numeroCarteirinha: '',
-          ativo: false,
-          senha: '',
-        };
-        this.toastr.success('Hospital cadastrado com sucesso.', 'Sucesso!', {
-          timeOut: 3000,
-        });
-      });
+  Salvar(){
+    this.http.post('https://localhost:7026/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
+      this.beneficiario = { nome: '', cpf: '', telefone: '', email: '', endereco: '', numeroCarteirinha: '', ativo: false, senha: ''}
+      this.mensagem = 'Beneficiário cadastrado com sucesso!';
+      setTimeout(() => {
+        this.mensagem = '';
+        this.router.navigate(['beneficiariolista']);
+      }, 2000);
+
+    }
+    );
   }
+
 }

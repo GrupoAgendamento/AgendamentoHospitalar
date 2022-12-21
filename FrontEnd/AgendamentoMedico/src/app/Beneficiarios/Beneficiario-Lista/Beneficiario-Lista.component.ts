@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-beneficiario-lista',
-    templateUrl: './Beneficiario-Lista.component.html',
-    styleUrls: ['./Beneficiario-Lista.component.css']
+    templateUrl: './Beneficiario-lista.component.html',
+    styleUrls: ['./Beneficiario-lista.component.css']
 })
 export class BeneficiarioListaComponent implements OnInit {
   public beneficiarios: any = [];
