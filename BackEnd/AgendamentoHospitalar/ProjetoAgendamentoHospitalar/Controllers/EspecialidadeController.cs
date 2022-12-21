@@ -78,7 +78,7 @@ namespace ProjetoAgendamentoHospitalar.Controllers
             }
         }
 
-        [HttpPut("{especialidade}")]
+        [HttpPut("{especialidadeId}")]
         public async Task<ActionResult<Especialidade>> Put(int especialidadeId, Especialidade model)
         {
             try

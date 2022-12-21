@@ -30,7 +30,7 @@ public partial class Agendamento
     public int IdBeneficiario { get; set; }
 
     public bool Ativo { get; set; }
-
+    
     [ForeignKey("IdBeneficiario")]
     [InverseProperty("Agendamentos")]
     public virtual Beneficiario IdBeneficiarioNavigation { get; set; } = null!;
