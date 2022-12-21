@@ -1,14 +1,14 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-Beneficiario-Lista',
-  templateUrl: './Beneficiario-Lista.component.html',
-  styleUrls: ['./Beneficiario-Lista.component.css']
+    selector: 'app-beneficiario-lista',
+    templateUrl: './Beneficiario-lista.component.html',
+    styleUrls: ['./Beneficiario-lista.component.css']
 })
 export class BeneficiarioListaComponent implements OnInit {
-
   public beneficiarios: any = [];
   public beneficiariosFiltrados: any = [];
   frase: string = "";
@@ -55,7 +55,6 @@ export class BeneficiarioListaComponent implements OnInit {
 
  editarBeneficiario(id: number) {
     this.router.navigate([`beneficiarioeditar/${id}`]);
-    console.log("beneficiarioeditar/")
   }
 
 
