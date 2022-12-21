@@ -14,6 +14,8 @@ import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-edi
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 import { NavComponent } from './Nav/Nav.component';
+import { AgendarComponent } from './Agendamento/agendar/agendar.component';
+import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NavComponent } from './Nav/Nav.component';
     ProfissionalListaComponent,
     HospitalListaComponent,
     HospitalEditarComponent,
-    NavComponent
+    NavComponent,
+    AgendarComponent,
+    ConsultarComponent,
   ],
   imports: [
     AppRoutingModule,
