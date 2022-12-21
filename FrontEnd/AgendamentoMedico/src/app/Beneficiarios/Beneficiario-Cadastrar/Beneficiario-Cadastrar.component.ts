@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IBeneficiarioDto } from '../../interfaces/IBeneficiarioDto';
 
 @Component({
@@ -14,7 +15,7 @@ export class BeneficiarioCadastrarComponent implements OnInit {
   beneficiario!: IBeneficiarioDto;
   mensagem: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.beneficiario = {
@@ -35,7 +36,9 @@ export class BeneficiarioCadastrarComponent implements OnInit {
       this.mensagem = 'Beneficiário cadastrado com sucesso!';
       setTimeout(() => {
         this.mensagem = '';
+        this.router.navigate(['beneficiariolista']);
       }, 2000);
+
     }
     );
   }
