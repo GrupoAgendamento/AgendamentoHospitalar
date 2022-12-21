@@ -8,6 +8,7 @@
             type="text"
             class="form-control mr-2"
             placeholder="buscar"
+            [(ngModel)]="filtroLista"
             >
     </div>
 </div>
@@ -24,17 +25,16 @@
         <th>Endereço</th>
         <th>Telefone</th>
         <th>CNES</th>
-        <th>Ativo</th>
+        <th>Opções</th>
        </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let hospital of hospitalLista">
+    <tbody *ngIf="hospitalLista && hospitalLista.length">
+        <tr *ngFor="let hospital of hospitalFiltrados">
             <td>{{hospital.nome}}</td>
             <td>{{hospital.cnpj}}</td>
             <td>{{hospital.endereco}}</td>
             <td>{{hospital.telefone}}</td>
             <td>{{hospital.cnes}}</td>
-            <td>{{hospital.ativo}}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarHospital(hospital.idHospital);">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerHospital(hospital.idHospital);">Excluir</button>

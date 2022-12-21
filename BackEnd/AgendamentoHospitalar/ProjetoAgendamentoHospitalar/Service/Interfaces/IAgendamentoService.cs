@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ProjetoAgendamentoHospitalar.Models;
+﻿using ProjetoAgendamentoHospitalar.Models;
 
 namespace ProjetoAgendamentoHospitalar.Service.Interfaces
 {

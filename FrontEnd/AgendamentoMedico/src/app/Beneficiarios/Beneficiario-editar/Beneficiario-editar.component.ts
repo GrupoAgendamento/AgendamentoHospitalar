@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IBeneficiarioDto } from 'src/app/interfaces/IBeneficiarioDto';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -44,40 +43,23 @@ export class BeneficiarioEditarComponent implements OnInit {
       error => console.log(error)
     );
   }
-
-  editarBeneficiario() {
+  
+  public editarBeneficiario() {
     if (this.validarInfo()) {
-      if (this.idBeneficiario == 0) {
-        this.http
-          .post('https://localhost:7026/api/Beneficiario', this.beneficiario)
-          .subscribe(() => {
-            this.router.navigate(['beneficiariolista']);
-            this.toastr.success(
-              'Beneficiário cadastrado com sucesso.',
-              'Sucesso!',
-              {
-                timeOut: 3000,
-              }
-            );
-          });
-      } else {
-        this.http
-          .patch(
-            `https://localhost:7026/api/Beneficiario/${this.idBeneficiario}`,
-            this.beneficiario
-          )
-          .subscribe(() => {
-            this.router.navigate(['beneficiariolista']);
-          });
-      }
+      this.http
+        .put('https://localhost:7026/api/Beneficiario/' + this.idBeneficiario, this.beneficiario)
+        .subscribe(
+          (response) => {
+            this.toastr.success('Beneficiário editado com sucesso!');
+            this.router.navigate(['/beneficiariolista']);
+          },
+          (error) => {
+            this.toastr.error('Erro ao editar beneficiário!');
+            console.log(error);
+          }
+        );
     } else {
-      this.toastr.warning(
-        'Preencha todos os campos!',
-        'Campos vazios',
-        {
-          timeOut: 3000,
-        }
-      );
+      this.toastr.error('Preencha todos os campos!');
     }
   }
 

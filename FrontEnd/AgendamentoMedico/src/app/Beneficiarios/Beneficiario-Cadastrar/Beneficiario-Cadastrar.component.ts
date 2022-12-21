@@ -18,7 +18,6 @@ export class BeneficiarioCadastrarComponent implements OnInit {
 
   ngOnInit() {
     this.beneficiario = {
-      
       nome: '',
       cpf: '',
       telefone: '',
