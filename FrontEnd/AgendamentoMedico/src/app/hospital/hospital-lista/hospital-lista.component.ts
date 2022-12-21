@@ -33,15 +33,6 @@ export class HospitalListaComponent {
         });
     }
 
-    detalharHospital(id: number) {
-        for(let i = 0; i < this.hospitalLista.length; i++) {
-          if(id == this.hospitalLista[i].idHospital) {
-            this.router.navigate([`hospitaldetalhe/${id}`]);
-            break;
-          }
-        }
-    }
-
     removerHospital(id: number) {
         this.http.delete(`https://localhost:7026/api/Hospital/${id}`)
         .subscribe(() => {
