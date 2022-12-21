@@ -19,7 +19,6 @@
     <div class="form-grou br-2">
         <label class="mr-2"></label>
         <input type="text" class="form-control mr-2" placeholder="buscar">
-        <button class="btn btn-success mr-3" type="submit" (click)="buscarEspecialidade()">Buscar</button>
     </div>
 </div>
 
@@ -28,17 +27,15 @@
        <tr>
         <th>Nome</th>
         <th>Descrição</th>
-        <th>Ativo</th>
        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let especialidade">
+        <tr *ngFor="let especialidade of especialidadeLista">
             <td>{{especialidade.nome}}</td>
             <td>{{especialidade.descricao}}</td>
-            <td>{{especialidade.ativo}}</td>
             <td>
-                <!--<button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade(especialidade.idEspecialidade);">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerEspecialidade(especialidade.idEspecialidade);">Excluir</button>-->
+                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade(especialidade.idEspecialidade);">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerEspecialidade(especialidade.idEspecialidade);">Excluir</button>
             </td>
         </tr>
     </tbody>

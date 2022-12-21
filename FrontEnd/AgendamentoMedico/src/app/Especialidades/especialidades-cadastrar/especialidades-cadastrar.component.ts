@@ -22,6 +22,8 @@ import { IEspecialidadeDto } from 'src/app/interfaces/IEspecialidadeDto';
         descricao: '',
         ativo: true
       }
+
+      this.getEspecialidades();
 }
 
   constructor(private http: HttpClient, private router: Router) {
@@ -42,10 +44,7 @@ import { IEspecialidadeDto } from 'src/app/interfaces/IEspecialidadeDto';
       });
   }
   }
-  buscarEspecialidade(){
-    throw new Error("Method not implemented.");
 
-  }
   editarEspecialidade(id: number){
     this.router.navigate([`especialidadecadastrar/${id}`]);
 

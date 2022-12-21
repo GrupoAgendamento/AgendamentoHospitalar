@@ -17,6 +17,7 @@ import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cad
 import { AgendarComponent } from './Agendamento/agendar/agendar.component';
 import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
 import { EspecialidadesCadastrarComponent } from './Especialidades/especialidades-cadastrar/especialidades-cadastrar.component';
+import { EspecialidadesEditarComponent } from './Especialidades/especialidades-editar/especialidades-editar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EspecialidadesCadastrarComponent } from './Especialidades/especialidade
     AgendarComponent,
     ConsultarComponent,
     EspecialidadesCadastrarComponent,
+    EspecialidadesEditarComponent,
   ],
 
   imports: [
