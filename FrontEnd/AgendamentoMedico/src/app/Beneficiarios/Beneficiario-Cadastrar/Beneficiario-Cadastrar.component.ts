@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IBeneficiarioDTO } from 'src/app/interfaces/IBeneficiarioDTO';
-import { ToastrService } from 'ngx-toastr';
+import { IBeneficiarioDTO } from '../../interfaces/IBeneficiarioDTO';
 
 @Component({
   selector: 'app-Beneficiario-Cadastrar',
@@ -11,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./Beneficiario-Cadastrar.component.css']
 })
 export class BeneficiarioCadastrarComponent implements OnInit {
-
   form: FormGroup = new FormGroup({});
   beneficiario!: IBeneficiarioDTO;
   mensagem: string = '';
