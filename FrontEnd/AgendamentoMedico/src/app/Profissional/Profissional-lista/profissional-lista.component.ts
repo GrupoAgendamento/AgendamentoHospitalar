@@ -3,6 +3,7 @@ import { IProfissionalDto } from "src/app/interfaces/IProfissionalDto";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
     selector: 'app-profissional-lista',
@@ -31,13 +32,14 @@ export class ProfissionalListaComponent {
         );
     }
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
         this.getProfissionais();
     }
 
     ngOnit() {
         this.getProfissionais();
-    } 
+    }
+
 
     getProfissionais() {
         this.profissionalLista = [];
@@ -46,17 +48,21 @@ export class ProfissionalListaComponent {
             response => {this.profissionalLista = response as IProfissionalDto[]; this.profissionalFiltrados = this.profissionalLista; },
             error => console.log(error)
         );
+
     }
 
     removerProfissional(id: number) {
         this.http.delete(`https://localhost:7026/api/Profissional/${id}`)
         .subscribe(() => {
+            this.toastr.success('Profissional excluído com sucesso.', 'Sucesso!', {
+                timeOut: 3000
+            })
             this.getProfissionais();
         });
     }
 
     editarProfissional(id: number) {
-        this.router.navigate([`profissionalcadastrar/${id}`]);
+        this.router.navigate([`profissionaleditar/${id}`]);
     }
 
     adicionarProfissional(){

@@ -1,1 +1,40 @@
-<p>consultar works!</p>
+<h2>Lista de agendamentos</h2>
+<hr />
+
+<div class="form-inline mb-2">
+    <div class="form-grou br-2">
+        <label class="mr-2"></label>
+        <input
+            type="text"
+            class="form-control mr-2"
+            placeholder="buscar"
+            >
+    </div>
+</div>
+
+<button (click)="getAgendamentos();" class="input-group-text">
+    <i class="material-icons">Cadastrar novo hospital</i>
+</button>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+       <tr>
+        <th>Hospital</th>
+        <th>Especialidade</th>
+        <th>Profissional</th>
+        <th>Data agendada</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let agendamento of agendamentoLista">
+            <td>{{agendamento.idHospital}}</td>
+            <td>{{agendamento.idEspecialidade}}</td>
+            <td>{{agendamento.idProfissional}}</td>
+            <td>{{agendamento.dataAgendamento}}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarAgendamento(agendamento.idAgendamento);">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerAgendamento(agendamento.idAgendamento);">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -4,6 +4,7 @@ using ProjetoAgendamentoHospitalar.Persistence;
 using ProjetoAgendamentoHospitalar.Persistence.Interfaces;
 using ProjetoAgendamentoHospitalar.Service;
 using ProjetoAgendamentoHospitalar.Service.Interfaces;
+using System.Text.Json.Serialization;
 
 namespace ProjetoAgendamentoHospitalar
 {
@@ -24,6 +25,9 @@ namespace ProjetoAgendamentoHospitalar
                     options => options.UseSqlServer(
                         builder.Configuration.GetConnectionString("Projeto")  
                 ));
+
+            builder.Services.AddControllers().AddJsonOptions(x =>
+                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
 

@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AgendamentoCadastrarComponent } from './agendar.component';
 
-describe('AgendarComponent', () => {
+describe('AgendamentoCadastrarComponent', () => {
   let component: AgendamentoCadastrarComponent;
   let fixture: ComponentFixture<AgendamentoCadastrarComponent>;
 
