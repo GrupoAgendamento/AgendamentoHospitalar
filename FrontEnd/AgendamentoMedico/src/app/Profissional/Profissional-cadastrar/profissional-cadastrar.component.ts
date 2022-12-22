@@ -3,20 +3,15 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
-
 @Component({
     selector: 'app-profissional-cadastrar',
     templateUrl: './profissional-cadastrar.component.html',
     styleUrls: ['./profissional-cadastrar.component.css']
 })
-
 export class ProfissionalCadastrarComponent implements OnInit {
     profissional!: IProfissionalDto
-
     constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
-
     }
-
     ngOnInit(): void {
         this.profissional = {
             idProfissional: 0,
@@ -26,7 +21,6 @@ export class ProfissionalCadastrarComponent implements OnInit {
             ativo: true
           }
     }
-
     salvarProfissional() {
         if(this.validarInfo()) {
             if(this.profissional.idProfissional == 0) {
@@ -49,13 +43,10 @@ export class ProfissionalCadastrarComponent implements OnInit {
             });
         }
     }
-
     validarInfo(): boolean {
         if (this.profissional.nome == '') {
-            return false;
-        } else {
-            return false;
+          return false;
         }
-    }
-
+        return true;
+      }
 }

@@ -48,9 +48,9 @@ import { ToastrService } from 'ngx-toastr';
         if(this.validarInfo()) {
           if(this.especialidade.idEspecialidade == 0){
           this.http.post('https://localhost:7026/api/Especialidade', this.especialidade)
-          .subscribe(() => {
-            this.router.navigate(['especialidadelista']);
-            });
+          // .subscribe(() => {
+          //   this.router.navigate(['especialidadelista']);
+          //   });
           }else {
             this.http.patch(`https://localhost:7026/api/Especialidade/${this.especialidade.idEspecialidade}`, this.especialidade)
             .subscribe(() => {

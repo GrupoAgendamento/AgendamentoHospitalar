@@ -21,9 +21,6 @@ export class AgendamentoCadastrarComponent {
       private router: Router,
       private toastr: ToastrService
       ) {
-        //this.route.paramMap.subscribe((params) => {
-         // this.agendamento.idAgendamento = Number(params.get('id'));
-       // });
 
       }
 
@@ -51,13 +48,13 @@ export class AgendamentoCadastrarComponent {
   salvarAgendamento(){
     if(this.agendamento.idAgendamento == 0){
       this.http.post('https://localhost:7026/api/Agendamento', this.agendamento)    .subscribe(() =>
-      {this.router.navigate(['consultar']);});
+      {this.router.navigate(['agendamentoconsultar']);});
       }
       else
       {
         this.http.patch(`https://localhost:7026/api/Agendamento/${this.agendamento.idAgendamento}`, this.agendamento)      .subscribe(() =>
         {
-          this.router.navigate(['consultar']);      });  }  }
+          this.router.navigate(['agendamentoconsultar']);      });  }  }
 
           getHospitais() {
             this.http.get('https://localhost:7026/api/Hospital').subscribe((response: any) => {
