@@ -1,50 +1,73 @@
-import { Component } from "@angular/core";
-import { IBeneficiarioDto } from "src/app/interfaces/IBeneficiarioDto";
+import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
 
 @Component({
-    selector: 'app-beneficiario-lista',
-    templateUrl: './Beneficiario-lista.component.html',
-    styleUrls: ['./Beneficiario-lista.component.css']
+  selector: 'app-beneficiario-lista',
+  templateUrl: './Beneficiario-lista.component.html',
+  styleUrls: ['./Beneficiario-lista.component.css'],
 })
+export class BeneficiarioListaComponent implements OnInit {
+  public beneficiarios: any = [];
+  public beneficiariosFiltrados: any = [];
+  frase: string = '';
+  private _filtroLista: string = '';
 
-export class BeneficiarioListaComponent {
-  beneficiarioLista: IBeneficiarioDto[] = [];
+  public get filtroLista() {
+    return this._filtroLista;
+  }
 
-  constructor(private http: HttpClient, private router: Router) {
+  public set filtroLista(value: string) {
+    this._filtroLista = value.replace('.', '');
+    this.beneficiariosFiltrados = this.filtroLista
+      ? this.filtrarBeneficiarios(this.filtroLista)
+      : this.beneficiarios;
+  }
+
+  filtrarBeneficiarios(filtrarPor: string): any {
+    filtrarPor = filtrarPor.replace('.', '');
+    return this.beneficiarios.filter(
+      (beneficiario: { cpf: string }) =>
+        beneficiario.cpf.replace('.', '').indexOf(filtrarPor) !== -1 ||
+        beneficiario.cpf.toLowerCase().indexOf(filtrarPor) !== -1
+    );
+  }
+
+  constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {}
+
+  ngOnInit() {
     this.getBeneficiarios();
   }
 
-  getBeneficiarios() {
-    this.beneficiarioLista = [];
-    this.http.get('https://localhost:7026/api/Beneficiario')
-    .pipe(
-      map((response: any) => {
-        return Object.values(response);
-      })
-    )
-    .subscribe((data) => {
-      for(let index = 0; index < data.length; index++) {
-        let json: any = data[index];
-        this.beneficiarioLista.push(json as IBeneficiarioDto);
-      }
+  public getBeneficiarios() {
+    this.http.get('https://localhost:7026/api/Beneficiario').subscribe(
+      (response) => {
+        this.beneficiarios = response;
+        this.beneficiariosFiltrados = this.beneficiarios;
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  public excluirBeneficiario(id: number) {
+    this.http.delete('https://localhost:7026/api/Beneficiario/' + id).subscribe(
+      (response) => {
+        this.getBeneficiarios();
+      },
+      (error) => console.log(error)
+    );
+    confirm(`Deseja realmente excluir o beneficiário?`);
+    this.toastr.success('Beneficiário excluído com sucesso.', 'Sucesso!', {
+      timeOut: 3000,
     });
   }
 
-  removerBeneficiario(id: number) {
-    this.http.delete(`https://localhost:7026/api/Beneficiario/${id}`)
-    .subscribe(() => {
-      this.getBeneficiarios();
-    });
-  }
-  
   editarBeneficiario(id: number) {
-    this.router.navigate([`beneficiariocadastrar/${id}`]);
+    this.router.navigate([`beneficiarioeditar/${id}`]);
   }
 
-  adicionarBeneficiario(){
+  adicionarProfissional(){
     this.router.navigate([`beneficiariocadastrar`]);
-  }
+}
 }

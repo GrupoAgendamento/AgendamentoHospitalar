@@ -1,40 +1,38 @@
 <h2>Hospitais</h2>
 <hr />
 
-<div class="form-inline mb-2">
-    <div class="form-grou br-2">
-        <label class="mr-2"></label>
+<div class="mx-auto form-inline d-flex justify-content-around">
+    <button (click)="adicionarHospital();" class="btn btn-primary ml-2">
+        Cadastrar novo hospital
+    </button>
+    <div>
         <input
             type="text"
             class="form-control mr-2"
-            placeholder="buscar"
+            placeholder="Buscar hospital"
+            [(ngModel)]="filtroLista"
             >
     </div>
 </div>
 
-<button (click)="adicionarHospital();" class="input-group-text">
-    <i class="material-icons">Cadastrar novo hospital</i>
-</button>
-
-<table class="table table-striped">
-    <thead class="thead-dark">
+<table class="table table-striped table-hover mt-3">
+    <thead>
        <tr>
-        <th>Nome</th>
-        <th>CNPJ</th>
-        <th>Endereço</th>
-        <th>Telefone</th>
-        <th>CNES</th>
-        <th>Ativo</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CNPJ</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">CNES</th>
+        <th scope="col">Opções</th>
        </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let hospital of hospitalLista">
-            <td>{{hospital.nome}}</td>
-            <td>{{hospital.cnpj}}</td>
-            <td>{{hospital.endereco}}</td>
-            <td>{{hospital.telefone}}</td>
-            <td>{{hospital.cnes}}</td>
-            <td>{{hospital.ativo}}</td>
+    <tbody *ngIf="hospitalLista && hospitalLista.length">
+        <tr *ngFor="let hospital of hospitalFiltrados">
+            <td colspan="1">{{hospital.nome}}</td>
+            <td colspan="1">{{hospital.cnpj}}</td>
+            <td colspan="1">{{hospital.endereco}}</td>
+            <td colspan="1">{{hospital.telefone}}</td>
+            <td colspan="1">{{hospital.cnes}}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarHospital(hospital.idHospital);">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerHospital(hospital.idHospital);">Excluir</button>

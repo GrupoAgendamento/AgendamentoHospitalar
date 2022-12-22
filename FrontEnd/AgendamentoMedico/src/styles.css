@@ -1,0 +1,11 @@
+h1, h2 {
+    font-weight: 200;
+    text-align: center;
+}
+form {
+    margin: 20px;
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
