@@ -52,9 +52,10 @@ export class ProfissionalCadastrarComponent implements OnInit {
 
     validarInfo(): boolean {
         if (this.profissional.nome == '') {
-          return false;
+            return false;
+        } else {
+            return false;
         }
-        return true;
-      }
+    }
 
 }

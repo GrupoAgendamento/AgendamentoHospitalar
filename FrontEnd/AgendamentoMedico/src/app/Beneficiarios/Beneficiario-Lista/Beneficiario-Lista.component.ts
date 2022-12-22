@@ -66,4 +66,8 @@ export class BeneficiarioListaComponent implements OnInit {
   editarBeneficiario(id: number) {
     this.router.navigate([`beneficiarioeditar/${id}`]);
   }
+
+  adicionarProfissional(){
+    this.router.navigate([`beneficiariocadastrar`]);
+}
 }
