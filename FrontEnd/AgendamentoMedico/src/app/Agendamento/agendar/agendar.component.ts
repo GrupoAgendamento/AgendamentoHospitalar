@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './agendar.component.html',
   styleUrls: ['./agendar.component.css']
 })
-export class AgendamentoCadastrarComponent implements OnInit {
+export class AgendarComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   agendamento!: IAgendamentoDto;
@@ -29,14 +29,14 @@ export class AgendamentoCadastrarComponent implements OnInit {
     }
   }
 
-  Salvar(){
-    if(this.agendamento.idAgendamento == 0){
-      this.http.post('https://localhost:7026/api/Agendamento', this.agendamento)    .subscribe(() =>
-      {this.router.navigate(['consultar']);});
-      }
-      else
-      {
-        this.http.patch(`https://localhost:7026/api/Agendamento/${this.agendamento.idAgendamento}`, this.agendamento)      .subscribe(() =>
-        {
-          this.router.navigate(['consultar']);      });  }  }
+  Salvar() {
+    if (this.agendamento.idAgendamento == 0) {
+      this.http.post('https://localhost:7026/api/Agendamento', this.agendamento).subscribe(() => { this.router.navigate(['consultar']); });
+    }
+    else {
+      this.http.patch(`https://localhost:7026/api/Agendamento/${this.agendamento.idAgendamento}`, this.agendamento).subscribe(() => {
+        this.router.navigate(['consultar']);
+      });
+    }
   }
+}
