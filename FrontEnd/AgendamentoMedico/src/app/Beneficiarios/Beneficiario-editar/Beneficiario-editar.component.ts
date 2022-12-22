@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-beneficiario-editar',
+  selector: 'app-beneficiario-Editar',
   templateUrl: './Beneficiario-editar.component.html',
   styleUrls: ['./Beneficiario-editar.component.css'],
 })
@@ -43,7 +43,7 @@ export class BeneficiarioEditarComponent implements OnInit {
       error => console.log(error)
     );
   }
-  
+
   public editarBeneficiario() {
     if (this.validarInfo()) {
       this.http

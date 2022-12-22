@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-editar.component';
+import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-Editar.component';
 import { AppComponent } from './app.component';
 import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
