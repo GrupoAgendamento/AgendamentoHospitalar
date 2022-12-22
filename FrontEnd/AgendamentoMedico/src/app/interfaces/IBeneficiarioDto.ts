@@ -1,4 +1,4 @@
-export interface  IBeneficiarioDTO
+export interface  IBeneficiarioDto
 {
   nome: string;
   cpf: string;

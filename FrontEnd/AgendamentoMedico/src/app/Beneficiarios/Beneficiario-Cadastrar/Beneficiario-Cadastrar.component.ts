@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { IBeneficiarioDTO } from 'src/app/interfaces/IBeneficiarioDto';
+import { IBeneficiarioDto } from 'src/app/interfaces/IBeneficiarioDto';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { IBeneficiarioDTO } from 'src/app/interfaces/IBeneficiarioDto';
 })
 export class BeneficiarioCadastrarComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  beneficiario!: IBeneficiarioDTO;
+  beneficiario!: IBeneficiarioDto;
   mensagem: string = '';
 
   constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) { }

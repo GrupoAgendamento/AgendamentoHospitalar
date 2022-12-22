@@ -1,4 +1,3 @@
-import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-editar.component';
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 import { ProfissionalCadastrarComponent } from './Profissional/Profissional-cadastrar/profissional-cadastrar.component';
@@ -9,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-Editar.component';
 import { AppComponent } from './app.component';
 import { NavComponent } from './Nav/Nav.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
@@ -35,7 +35,6 @@ import { EspecialidadesEditarComponent } from './Especialidades/especialidades-e
     EspecialidadesCadastrarComponent,
     EspecialidadesEditarComponent,
   ],
-
   imports: [
     AppRoutingModule,
     BrowserModule,

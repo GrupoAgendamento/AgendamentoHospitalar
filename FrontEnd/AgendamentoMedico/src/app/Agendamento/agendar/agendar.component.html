@@ -2,17 +2,25 @@
 
 <form class="row g-3 needs-validation" novalidate>
   <div class="col-md-4">
-    <label for="agendamentoHospital" class="form-label">Digite o nome do hospital:</label>
-    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.idHospital" placeholder="Hospital" required id="agendamentoHospital">
+    <label for="">Hospitais</label>
+    <select  bindLabel="id" bindValue="idHospital" [ngModelOptions]="{standalone: true}" [(ngModel)]="idHospitalSelecionado" (change)="onSelect()">
+      <option *ngFor="let hospital of hospitais" value="{{hospital.idHospital}}">
+        {{hospital.nome}}
+      </option>
+    </select>
     <div class="invalid-feedback">
       É obrigatório informar o nome do hospital.
     </div>
   </div>
   <div class="col-md-4">
-    <label for="agendamentoEspecialidade" class="form-label">Digite o nome da especialidade desejada:</label>
-    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.idEspecialidade" placeholder="Especialidade médica" required id="agendamentoEspecialidade">
+    <label for="">Especialidades</label>
+    <select bindLabel="id" bindValue="idEspecialidade" [ngModelOptions]="{standalone: true}" [(ngModel)]="idEspecialidadeSelecionada" (change)="onSelect()">
+      <option *ngFor="let especialidade of especialidades" value="{{especialidade.idEspecialidade}">
+        {{especialidade.nome}}
+      </option>
+    </select>
     <div class="invalid-feedback">
-      É obrigatório informar a especialidade médica.
+      É obrigatório informar o nome do hospital.
     </div>
   </div>
   <div class="col-md-4">
