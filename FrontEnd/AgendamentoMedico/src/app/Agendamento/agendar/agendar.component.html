@@ -1,7 +1,6 @@
-<h2>Cadastro de agendamento</h2>
+<!-- <h2>Cadastro de agendamento</h2>
 
 <form class="row g-3 needs-validation" novalidate>
-  <!--Hospital-->
   <div class="col-md-4">
     <label for="">Hospitais</label>
     <select  bindLabel="id" bindValue="idHospital" [ngModelOptions]="{standalone: true}" [(ngModel)]="idHospitalSelecionado" (change)="onSelect()">
@@ -13,7 +12,6 @@
       É obrigatório informar o nome do hospital.
     </div>
   </div>
-  <!--Especialidade-->
   <div class="col-md-4">
     <label for="">Especialidades</label>
     <select bindLabel="id" bindValue="idEspecialidade" [ngModelOptions]="{standalone: true}" [(ngModel)]="idEspecialidadeSelecionada" (change)="onSelect()">
@@ -25,7 +23,6 @@
       É obrigatório informar o nome do hospital.
     </div>
   </div>
-  <!--Médico-->
   <div class="col-md-4">
     <label for="agendamentoProfissional" class="form-label">Digite o nome do profissional:</label>
     <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.idProfissional" placeholder="Profissional" required id="agendamentoProfissional">
@@ -33,7 +30,6 @@
       É obrigatório informar o nome do hospital.
     </div>
   </div>
-  <!--Data-->
   <div class="col-md-4">
     <label for="agendamentoData" class="form-label">Selecione a data para agendamento:</label>
     <input type="datetime-local" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendar.dataHoraAgendamento" required id="agendamentoData">
@@ -41,8 +37,7 @@
       É obrigatório informar a data para agendamento.
     </div>
   </div>
-  <!--Enviar-->
   <div class="col-12">
     <button class="btn btn-success mt-3" type="submit" (click)="Salvar()">Cadastrar</button>
   </div>
-</form>
+</form> -->

@@ -1,62 +1,56 @@
-import { Component, OnInit } from "@angular/core";
-import { IHospitalDto } from "src/app/interfaces/IHospitalDto";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'app-hospital-editar',
-    templateUrl: './hospital-editar.component.html',
-    styleUrls: ['./hospital-editar.component.css']
+  selector: 'app-hospital-editar',
+  templateUrl: './hospital-editar.component.html',
+  styleUrls: ['./hospital-editar.component.css']
 })
-
 export class HospitalEditarComponent implements OnInit {
-    hospital!: IHospitalDto
 
-    constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
-        
+  hospital!: any;
+  idHospital!: number;
+
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService
+    ) {
+      this.route.paramMap.subscribe((params) => {
+        this.idHospital = Number(params.get('id'));
+     });
+
     }
 
-    ngOnInit(): void {
-        this.hospital = {
-            idHospital: 0,
-            nome: '',
-            cnpj: '',
-            endereco: '',
-            telefone: '',
-            cnes: '',
-            ativo: true
-          }
+  ngOnInit() {
+    this.getHospitalById(this.idHospital);
+    this.hospital = {
+      nome: '',
+      cnpj: '',
+      endereco: '',
+      telefone: '',
+      cnes: '',
+      ativo: false
     }
+  }
 
-    salvarHospital() {
-        if(this.validarInfo()) {
-            if(this.hospital.idHospital == 0) {
-                this.http.post('https://localhost:7026/api/Hospital', this.hospital)
-                .subscribe(() => {
-                    this.router.navigate(['hospitallista']);
-                    this.toastr.success('Hospital cadastrado com sucesso.', 'Sucesso!', {
-                        timeOut: 3000
-                    })
-                });
-            } else {
-                this.http.patch(`https://localhost:7026/api/Hospital/${this.hospital.idHospital}`, this.hospital)
-                .subscribe(() => {
-                    this.router.navigate(['hospitallista']);
-                });
-            }
-        } else {
-            this.toastr.warning('Preencha o campo: Nome do hospital.', 'Campo vazio', {
-                timeOut: 3000,
-            });
-        }
-    }
+  public getHospitalById(id: number){
+    this.http.get('https://localhost:7026/api/Hospital/' + id).subscribe(
+      response => {this.hospital = response; },
+      error => console.log(error)
+    );
+  }
 
-    validarInfo(): boolean {
-        if (this.hospital.nome == '') {
-          return false;
-        }
-        return true;
-      }
+  public editarHospital(){
+    this.http.put('https://localhost:7026/api/Hospital/' + this.idHospital, this.hospital).subscribe(
+    response => {this.router.navigate(['/hospitallista']); },
+      error => console.log(error)
+    );
+    this.toastr.success('Hospital salvo com sucesso.', 'Sucesso!', {
+      timeOut: 3000,
+    });
+  }
 
 }

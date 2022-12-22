@@ -1,24 +1,27 @@
-import { IProfissionalDto } from '../../interfaces/IProfissionalDto';
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'app-profissional-editar',
-    templateUrl: './profissional-editar.component.html',
-    styleUrls: ['./profissional-editar.component.css']
+  selector: 'app-Profissional-editar',
+  templateUrl: './Profissional-editar.component.html',
+  styleUrls: ['./Profissional-editar.component.css']
 })
-
 export class ProfissionalEditarComponent implements OnInit {
-    profissional!: IProfissionalDto
+    profissional!: any;
+    idProfissional!: number;
 
-    constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
+    constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
+      this.route.paramMap.subscribe((params) => {
+        this.idProfissional = Number(params.get('id'));
+     });
 
     }
 
-    ngOnInit(): void {
-        this.profissional = {
+    ngOnInit() {
+      this.getProfissionalById(this.idProfissional);
+      this.profissional = {
             idProfissional: 0,
             nome: '',
             endereco: '',
@@ -27,34 +30,21 @@ export class ProfissionalEditarComponent implements OnInit {
           }
     }
 
-    salvarProfissional() {
-        if(this.validarInfo()) {
-            if(this.profissional.idProfissional == 0) {
-                this.http.post('https://localhost:7026/api/Profissional', this.profissional)
-                .subscribe(() => {
-                    this.router.navigate(['profissionallista']);
-                    this.toastr.success('Profissional cadastrado com sucesso.', 'Sucesso!', {
-                        timeOut: 3000
-                    })
-                });
-            } else {
-                this.http.patch(`https://localhost:7026/api/Profissional/${this.profissional.idProfissional}`, this.profissional)
-                .subscribe(() => {
-                    this.router.navigate(['profissionallista']);
-                });
-            }
-        } else {
-            this.toastr.warning('Preencha o campo: Nome do profissional.', 'Campo vazio', {
-                timeOut: 3000,
-            });
-        }
+    public getProfissionalById(id: number){
+      this.http.get('https://localhost:7026/api/Profissional/' + id).subscribe(
+        response => {this.profissional = response; },
+        error => console.log(error)
+      );
     }
 
-    validarInfo(): boolean {
-        if (this.profissional.nome == '') {
-          return false;
-        }
-        return true;
-      }
+    public editarProfissional(){
+      this.http.put('https://localhost:7026/api/Profissional/' + this.idProfissional, this.profissional).subscribe(
+      response => {this.router.navigate(['/profissionallista']); },
+        error => console.log(error)
+      );
+      this.toastr.success('Hospital salvo com sucesso.', 'Sucesso!', {
+        timeOut: 3000,
+      });
+    }
 
-}
+  }

@@ -1,9 +1,11 @@
 <h2>Beneficiários</h2>
 <hr />
 
-<div  class="form-inline mb-2">
-    <div class="form-grou br-2">
-        <label class="mr-2"></label>
+<div class="mx-auto form-inline d-flex justify-content-around">
+    <button (click)="adicionarProfissional();" class="btn btn-primary ml-2">
+        Criar novo beneficiário
+    </button>
+    <div>
         <input
             type="text"
             class="form-control mr-2"
@@ -12,28 +14,27 @@
             >
     </div>
 </div>
-<table class="table table-striped">
-    <thead class="thead-dark">
+<table class="table table-striped table-hover mt-3">
+    <thead>
        <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>CPF</th>
-        <th>Telefone</th>
-        <th>Endereço</th>
-        <th>N.Carteirinha</th>
-        <th>Email</th>
-        <th>Opções</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">N.Carteirinha</th>
+        <th scope="col">Email</th>
+        <th scope="col">Opções</th>
        </tr>
     </thead>
+
     <tbody *ngIf="beneficiarios && beneficiarios.length">
         <tr *ngFor="let beneficiario of beneficiariosFiltrados">
-            <td>{{beneficiario.idBeneficiario}}</td>
-            <td>{{beneficiario.nome}}</td>
-            <td>{{beneficiario.cpf}}</td>
-            <td>{{beneficiario.telefone}}</td>
-            <td>{{beneficiario.endereco}}</td>
-            <td>{{beneficiario.numeroCarteirinha}}</td>
-            <td>{{beneficiario.email}}</td>
+            <td colspan="1">{{beneficiario.nome}}</td>
+            <td colspan="1">{{beneficiario.cpf}}</td>
+            <td colspan="1">{{beneficiario.telefone}}</td>
+            <td colspan="1">{{beneficiario.endereco}}</td>
+            <td colspan="1">{{beneficiario.numeroCarteirinha}}</td>
+            <td colspan="1">{{beneficiario.email}}</td>
             <td>
               <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarBeneficiario(beneficiario.idBeneficiario)">Editar</button>
               <button type="button" class="btn btn-danger btn-sm ms-1" (click)="excluirBeneficiario(beneficiario.idBeneficiario)">Excluir</button>
