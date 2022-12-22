@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IBeneficiarioDto } from '../../interfaces/IBeneficiarioDto';
+import { IBeneficiarioDTO } from '../../interfaces/IBeneficiarioDTO';
 
 @Component({
   selector: 'app-Beneficiario-Cadastrar',
@@ -12,7 +12,7 @@ import { IBeneficiarioDto } from '../../interfaces/IBeneficiarioDto';
 export class BeneficiarioCadastrarComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
-  beneficiario!: IBeneficiarioDto;
+  beneficiario!: IBeneficiarioDTO;
   mensagem: string = '';
 
   constructor(private http: HttpClient, private router: Router) { }
