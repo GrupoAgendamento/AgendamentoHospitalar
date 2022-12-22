@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr/toastr/toastr.service';
-import { IBeneficiarioDTO } from '../../interfaces/IBeneficiarioDTO';
+import { IBeneficiarioDTO } from 'src/app/interfaces/IBeneficiarioDto';
+
 
 @Component({
   selector: 'app-Beneficiario-Cadastrar',

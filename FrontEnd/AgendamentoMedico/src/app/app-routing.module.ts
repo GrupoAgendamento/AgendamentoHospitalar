@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router';
 import { BeneficiarioCadastrarComponent} from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component'
-import { BeneficiarioEditarComponent} from './Beneficiarios/Beneficiario-Editar/Beneficiario-Editar.component'
+import { BeneficiarioEditarComponent} from './Beneficiarios/Beneficiario-Editar/Beneficiario-editar.component'
 import { BeneficiarioListaComponent} from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component'
 import { EspecialidadesCadastrarComponent } from './Especialidades/especialidades-cadastrar/especialidades-cadastrar.component';
 import { EspecialidadesEditarComponent } from './Especialidades/especialidades-editar/especialidades-editar.component';
