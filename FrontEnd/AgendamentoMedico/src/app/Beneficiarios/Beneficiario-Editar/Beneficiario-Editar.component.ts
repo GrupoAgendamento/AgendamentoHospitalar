@@ -1,29 +1,29 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-Beneficiario-Editar',
+  selector: 'app-beneficiario-Editar',
   templateUrl: './Beneficiario-Editar.component.html',
-  styleUrls: ['./Beneficiario-Editar.component.css']
+  styleUrls: ['./Beneficiario-Editar.component.css'],
 })
 export class BeneficiarioEditarComponent implements OnInit {
-
   beneficiario!: any;
   idBeneficiario!: number;
-
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
+    private router: Router,
     private route: ActivatedRoute,
-    private router: Router
-    ) {
-      this.route.paramMap.subscribe((params) => {
-        this.idBeneficiario = Number(params.get('id'));
-     });
+    private toastr: ToastrService
+  ) {
+    this.route.paramMap.subscribe((params) => {
+      this.idBeneficiario = Number(params.get('id'));
+   });
+  }
 
-    }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.getBeneficiarioById(this.idBeneficiario);
     this.beneficiario = {
       nome: '',
@@ -32,9 +32,9 @@ export class BeneficiarioEditarComponent implements OnInit {
       email: '',
       endereco: '',
       numeroCarteirinha: '',
-      ativo: false,
       senha: '',
-    }
+      ativo: false,
+    };
   }
 
   public getBeneficiarioById(id: number){
@@ -44,12 +44,35 @@ export class BeneficiarioEditarComponent implements OnInit {
     );
   }
 
-  public editarBeneficiario(){
-    this.http.put('https://localhost:7026/api/Beneficiario/' + this.idBeneficiario, this.beneficiario).subscribe(
-      response => {this.router.navigate(['/beneficiariolista']); },
-      error => console.log(error)
-    );
+  public editarBeneficiario() {
+    if (this.validarInfo()) {
+      this.http
+        .put('https://localhost:7026/api/Beneficiario/' + this.idBeneficiario, this.beneficiario)
+        .subscribe(
+          (response) => {
+            this.toastr.success('Beneficiário editado com sucesso!');
+            this.router.navigate(['/beneficiariolista']);
+          },
+          (error) => {
+            this.toastr.error('Erro ao editar beneficiário!');
+            console.log(error);
+          }
+        );
+    } else {
+      this.toastr.error('Preencha todos os campos!');
+    }
   }
 
+  validarInfo(): boolean {
+    if (
+      this.beneficiario.nome == '' ||
+      this.beneficiario.cpf == '' ||
+      this.beneficiario.numeroCarteirinha == '' ||
+      this.beneficiario.email == '' ||
+      this.beneficiario.senha == ''
+    ) {
+      return false;
+    }
+    return true;
+  }
 }
-
