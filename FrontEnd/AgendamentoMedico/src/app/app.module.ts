@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { NavComponent } from './Nav/Nav.component';
-import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-Editar.component';
+import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-editar.component';
 import { BeneficiarioListaComponent } from './Beneficiarios/Beneficiario-Lista/Beneficiario-Lista.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
@@ -17,31 +17,23 @@ import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-edi
 import { ProfissionalCadastrarComponent } from './Profissional/Profissional-cadastrar/profissional-cadastrar.component';
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
-// import { AgendarComponent } from './Agendamento/agendar/agendar.component';
-import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
-import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
-import { NavComponent } from './Nav/Nav.component';
-import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 import { EspecialidadesCadastrarComponent } from './Especialidades/especialidades-cadastrar/especialidades-cadastrar.component';
 import { EspecialidadesEditarComponent } from './Especialidades/especialidades-editar/especialidades-editar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BeneficiarioCadastrarComponent,
-    BeneficiarioListaComponent,
+    NavComponent,
     BeneficiarioEditarComponent,
+    BeneficiarioListaComponent,
     BeneficiarioCadastrarComponent,
-    ProfissionalCadastrarComponent,
-    ProfissionalListaComponent,
-    ProfissionalEditarComponent,
     HospitalListaComponent,
     HospitalCadastrarComponent,
     HospitalEditarComponent,
-    NavComponent,
-    // AgendarComponent,
-    BeneficiarioCadastrarComponent,
-    ConsultarComponent,
+    ProfissionalCadastrarComponent,
+    ProfissionalListaComponent,
+    ProfissionalEditarComponent,
+    ProfissionalListaComponent,
     EspecialidadesCadastrarComponent,
     EspecialidadesEditarComponent,
   ],
