@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBeneficiarioDto } from '../../interfaces/IBeneficiarioDto';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IBeneficiarioDTO } from 'src/app/interfaces/IBeneficiarioDTO';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-Beneficiario-Cadastrar',
@@ -11,14 +13,13 @@ import { IBeneficiarioDto } from '../../interfaces/IBeneficiarioDto';
 export class BeneficiarioCadastrarComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
-  beneficiario!: IBeneficiarioDto;
+  beneficiario!: IBeneficiarioDTO;
   mensagem: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.beneficiario = {
-      
       nome: '',
       cpf: '',
       telefone: '',
@@ -33,10 +34,9 @@ export class BeneficiarioCadastrarComponent implements OnInit {
   Salvar(){
     this.http.post('https://localhost:7026/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
       this.beneficiario = { nome: '', cpf: '', telefone: '', email: '', endereco: '', numeroCarteirinha: '', ativo: false, senha: ''}
-      this.mensagem = 'Beneficiário cadastrado com sucesso!';
-      setTimeout(() => {
-        this.mensagem = '';
-      }, 2000);
+      this.toastr.success('Beneficiário cadastrado com sucesso.', 'Sucesso!', {
+        timeOut: 3000
+      })
     }
     );
   }

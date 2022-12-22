@@ -25,6 +25,7 @@
         <th>Opções</th>
        </tr>
     </thead>
+
     <tbody *ngIf="beneficiarios && beneficiarios.length">
         <tr *ngFor="let beneficiario of beneficiariosFiltrados">
             <td>{{beneficiario.idBeneficiario}}</td>
