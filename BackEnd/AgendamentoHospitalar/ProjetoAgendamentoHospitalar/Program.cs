@@ -24,23 +24,30 @@ namespace ProjetoAgendamentoHospitalar
                     options => options.UseSqlServer(
                         builder.Configuration.GetConnectionString("Projeto")  
                 ));
+
+            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
+
             builder.Services.AddScoped<IBeneficiarioService, BeneficiarioService>();
             builder.Services.AddScoped<IBeneficiarioPersist, BeneficiarioPersistence>();
-            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
+            
 
             builder.Services.AddScoped<IEspecialidadeService, EspecialidadeService>();
             builder.Services.AddScoped<IEspecialidadePersist, EspecialidadePersistence>();
 
             builder.Services.AddScoped<IHospitalService, HospitalService>();
             builder.Services.AddScoped<IHospitalPersist, HospitalPersistence>();
-            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
+            
 
             builder.Services.AddScoped<IAgendamentoService, AgendamentoService>();
             builder.Services.AddScoped<IAgendamentoPersist, AgendamentoPersistence>();
-            builder.Services.AddScoped<IGeralPersist, GeralPersistence>();
+            
 
             builder.Services.AddScoped<IProfissionalService, ProfissionalService>();
             builder.Services.AddScoped<IProfissionalPersist, ProfissionalPersistence>();
+
+            builder.Services.AddScoped<IAgendamentoConfiguracaoService, AgendamentoConfiguracaoService>();
+            builder.Services.AddScoped<IAgendamentoConfiguracaoPersist, AgendamentoConfiguracaoPersistence>();
+           
 
 
             var app = builder.Build();
