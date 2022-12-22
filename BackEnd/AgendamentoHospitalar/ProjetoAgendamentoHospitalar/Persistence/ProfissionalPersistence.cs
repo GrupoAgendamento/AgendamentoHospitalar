@@ -24,7 +24,7 @@ namespace ProjetoAgendamentoHospitalar.Persistence
         public async Task<Profissional> GetProfissionalAsyncByEndereço(string profissionalEndereço)
         {
             IQueryable<Profissional> query = _context.Profissionals;
-            query = query.AsNoTracking().Where(p => p.Endereço == profissionalEndereço);
+            query = query.AsNoTracking().Where(p => p.Endereco == profissionalEndereço);
             return await query.FirstOrDefaultAsync();
         }
 

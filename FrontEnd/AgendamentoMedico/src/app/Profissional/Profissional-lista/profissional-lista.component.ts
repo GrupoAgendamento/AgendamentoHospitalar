@@ -40,6 +40,7 @@ export class ProfissionalListaComponent {
         this.getProfissionais();
     }
 
+
     getProfissionais() {
         this.profissionalLista = [];
         this.http.get('https://localhost:7026/api/Profissional')
@@ -47,6 +48,7 @@ export class ProfissionalListaComponent {
             response => {this.profissionalLista = response as IProfissionalDto[]; this.profissionalFiltrados = this.profissionalLista; },
             error => console.log(error)
         );
+
     }
 
     removerProfissional(id: number) {

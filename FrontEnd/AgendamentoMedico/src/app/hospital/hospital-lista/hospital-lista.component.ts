@@ -12,6 +12,28 @@ import { map } from 'rxjs';
 
 export class HospitalListaComponent {
     hospitalLista: IHospitalDto[] = [];
+    hospitalFiltrados: any = [];
+    private _filtroLista: string = "";
+
+    public get filtroLista(){
+        return this._filtroLista;
+    }
+
+    public set filtroLista(value: string){
+        this._filtroLista = value;
+        this.hospitalFiltrados = this.filtroLista ? this.filtrarHospital(this.filtroLista) : this.hospitalLista;
+    }
+
+    filtrarHospital(nome: string): any{
+        return this.hospitalLista.filter(
+            (hospital: { nome: string; }) => hospital.nome.toLowerCase().indexOf(nome.toLowerCase()) !== -1 ||
+            hospital.nome.toLowerCase().indexOf(nome.toLowerCase()) !== -1
+        );
+    }
+
+    ngOnit() {
+        this.getHospitais();
+    }
 
     constructor(private http: HttpClient, private router: Router) {
         this.getHospitais();
@@ -19,18 +41,10 @@ export class HospitalListaComponent {
 
     getHospitais() {
         this.hospitalLista = [];
-        this.http.get('https://localhost:7026/api/Hospital')
-        .pipe(
-            map((response: any) => {
-                return Object.values(response);
-            })
-        )
-        .subscribe((data) => {
-            for(let index = 0; index < data.length; index++) {
-                let json: any = data[index];
-                this.hospitalLista.push(json as IHospitalDto);
-            }
-        });
+        this.http.get('https://localhost:7026/api/Hospital').subscribe(
+            response => {this.hospitalLista = response as IHospitalDto[]; this.hospitalFiltrados = this.hospitalLista; },
+            error => console.log(error)
+        );
     }
 
     removerHospital(id: number) {
@@ -39,7 +53,7 @@ export class HospitalListaComponent {
             this.getHospitais();
         });
     }
-    
+
     editarHospital(id: number) {
         this.router.navigate([`hospitalcadastrar/${id}`]);
     }
