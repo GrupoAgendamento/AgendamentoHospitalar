@@ -13,11 +13,16 @@ export class AgendarComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   agendar!: Agendar;
   mensagem: string = '';
+  public hospitais: any = [];
+  public especialidades: any = [];
+  idHospitalSelecionado : number = 0;
+  idEspecialidadeSelecionada : number = 0;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.agendar = new Agendar();
+    this.getHospitais();
   }
 
   Salvar(){
@@ -29,6 +34,25 @@ export class AgendarComponent implements OnInit {
       }, 2000);
     }
     );
+  }
+
+  public getHospitais(){
+    this.http.get('https://localhost:7026/api/Hospital').subscribe(
+      response => {this.hospitais = response; },
+      error => console.log(error)
+    );
+  }
+
+  public getEspecialidade(){
+    this.http.get('https://localhost:7026/api/Especialidade').subscribe(
+      response => {this.especialidades = response; },
+      error => console.log(error)
+    );
+  }
+
+  onSelect(){
+    console.log(this.idHospitalSelecionado);
+    console.log(this.idEspecialidadeSelecionada);
   }
 
 }
