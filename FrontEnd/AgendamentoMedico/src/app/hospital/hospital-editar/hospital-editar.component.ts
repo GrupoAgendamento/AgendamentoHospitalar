@@ -44,7 +44,7 @@ export class HospitalEditarComponent implements OnInit {
   }
 
   public editarHospital(){
-    this.http.put('https://localhost:7026/api/Hospital/' + this.idHospital, this.hospital).subscribe( 
+    this.http.put('https://localhost:7026/api/Hospital/' + this.idHospital, this.hospital).subscribe(
     response => {this.router.navigate(['/hospitallista']); },
       error => console.log(error)
     );

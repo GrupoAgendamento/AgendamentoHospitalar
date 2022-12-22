@@ -38,7 +38,8 @@ export class ProfissionalListaComponent {
 
     ngOnit() {
         this.getProfissionais();
-    } 
+    }
+
 
     getProfissionais() {
         this.profissionalLista = [];
@@ -47,6 +48,7 @@ export class ProfissionalListaComponent {
             response => {this.profissionalLista = response as IProfissionalDto[]; this.profissionalFiltrados = this.profissionalLista; },
             error => console.log(error)
         );
+
     }
 
     removerProfissional(id: number) {
