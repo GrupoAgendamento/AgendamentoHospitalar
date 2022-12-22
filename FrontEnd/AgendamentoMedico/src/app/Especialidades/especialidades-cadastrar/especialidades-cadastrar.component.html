@@ -30,11 +30,11 @@
        </tr>
     </thead>
     <tbody *ngIf="especialidadeLista && especialidadeLista.length">
-        <tr *ngFor="let especialidade of especialidadeLista">
+        <tr *ngFor="let especialidade of especialidadeFiltrados">
             <td>{{especialidade.nome}}</td>
             <td>{{especialidade.descricao}}</td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade();">Editar</button>
+                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade(especialidade.idEspecialidade);">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerEspecialidade(especialidade.idEspecialidade);">Excluir</button>
             </td>
         </tr>

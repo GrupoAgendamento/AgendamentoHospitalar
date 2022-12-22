@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   export class EspecialidadesCadastrarComponent {
   idEspecialidade!: number;
   especialidade!: IEspecialidadeDto;
-  especialidadeLista : IEspecialidadeDto[] = [];
+  especialidadeLista : any = [];
   especialidadeFiltrados: any = [];
   private _filtroLista: string = '';
 
@@ -35,7 +35,6 @@ import { ToastrService } from 'ngx-toastr';
       ativo: true
     }
     this.getEspecialidades();
-    this.getEspecialidadeById(this.idEspecialidade);
   }
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private toastr: ToastrService)
@@ -72,35 +71,20 @@ import { ToastrService } from 'ngx-toastr';
     );
   }
 
-  editarEspecialidade(){
-    if (this.validarInfo()) {
-      this.http
-        .put('https://localhost:7026/api/Especialidade/' + this.idEspecialidade, this.especialidade)
-        .subscribe(
-          (response) => {
-            this.toastr.success('Especialidade editada com sucesso!');
-            this.router.navigate(['/especialidadelista']);
-          },
-          (error) => {
-            this.toastr.error('Erro ao editar especialidade!');
-            console.log(error);
-          }
-        );
-    } else {
-      this.toastr.error('Preencha todos os campos!');
-    }
-  }
 
-
-
-
-  getEspecialidadeById(id: number){
-    this.http.get('https://localhost:7026/api/Especialidade/' + id).subscribe(
-      response => {this.especialidade = response as IEspecialidadeDto; },
-      error => console.log(error)
+  getEspecialidades(){
+    this.especialidadeLista = [];
+      this.http.get('https://localhost:7026/api/Especialidade')
+      .subscribe(
+        response => {this.especialidadeLista = response; this.especialidadeFiltrados = this.especialidadeLista; },
+        error => console.log(error)
     );
   }
 
+ editarEspecialidade(id: number) {
+    this.router.navigate([`especialidadeseditar/${id}`]);
+
+ }
 
   removerEspecialidade(id: number){
     this.http.delete(`https://localhost:7026/api/Especialidade/${id}`)
@@ -108,14 +92,6 @@ import { ToastrService } from 'ngx-toastr';
             this.getEspecialidades();
         });
 
-  }
-  getEspecialidades(){
-    this.especialidadeLista = [];
-      this.http.get('https://localhost:7026/api/Especialidade')
-      .subscribe(
-        response => {this.especialidadeLista = response as IEspecialidadeDto[]; this.especialidadeFiltrados = this.especialidadeLista; },
-        error => console.log(error)
-    );
   }
 
   validarInfo(): boolean {

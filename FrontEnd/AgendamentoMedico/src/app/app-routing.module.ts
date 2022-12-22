@@ -8,6 +8,8 @@ import { HospitalEditarComponent } from './hospital/hospital-editar/hospital-edi
 import { HospitalListaComponent } from './hospital/hospital-lista/hospital-lista.component';
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
+import { EspecialidadesEditarComponent } from './Especialidades/especialidades-editar/especialidades-editar.component';
+
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'profissionalcadastrar/:id', component: ProfissionalEditarComponent },
   { path: 'profissionallista', component: ProfissionalListaComponent },
   { path: 'especialidadescadastrar', component: EspecialidadesCadastrarComponent},
+  { path: 'especialidadescadastrar/:id', component: EspecialidadesCadastrarComponent},
+  { path: 'especialidadeseditar/:id', component: EspecialidadesEditarComponent },
 
 ];
 
