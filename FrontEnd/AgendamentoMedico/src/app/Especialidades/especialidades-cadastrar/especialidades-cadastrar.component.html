@@ -18,7 +18,7 @@
   <div class="form-inline mb-2">
     <div class="form-grou br-2">
         <label class="mr-2"></label>
-        <input type="text" class="form-control mr-2" placeholder="buscar">
+        <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filtroLista" >
     </div>
 </div>
 
@@ -29,12 +29,12 @@
         <th>Descrição</th>
        </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="especialidadeLista && especialidadeLista.length">
         <tr *ngFor="let especialidade of especialidadeLista">
             <td>{{especialidade.nome}}</td>
             <td>{{especialidade.descricao}}</td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade(especialidade.idEspecialidade);">Editar</button>
+                <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarEspecialidade();">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ms-1" (click)="removerEspecialidade(especialidade.idEspecialidade);">Excluir</button>
             </td>
         </tr>

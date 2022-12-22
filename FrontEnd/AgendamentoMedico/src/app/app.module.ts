@@ -15,7 +15,6 @@ import { ProfissionalListaComponent } from './Profissional/Profissional-lista/pr
 import { NavComponent } from './Nav/Nav.component';
 import { BeneficiarioCadastrarComponent } from './Beneficiarios/Beneficiario-Cadastrar/Beneficiario-Cadastrar.component';
 import { EspecialidadesCadastrarComponent } from './Especialidades/especialidades-cadastrar/especialidades-cadastrar.component';
-import { EspecialidadesEditarComponent } from './Especialidades/especialidades-editar/especialidades-editar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { EspecialidadesEditarComponent } from './Especialidades/especialidades-e
     HospitalEditarComponent,
     NavComponent,
     EspecialidadesCadastrarComponent,
-    EspecialidadesEditarComponent,
   ],
 
   imports: [
