@@ -1,4 +1,4 @@
-import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-editar/Beneficiario-editar.component';
+import { BeneficiarioEditarComponent } from './Beneficiarios/Beneficiario-Editar/Beneficiario-editar.component';
 import { ProfissionalEditarComponent } from './Profissional/Profissional-editar/profissional-editar.component';
 import { ProfissionalListaComponent } from './Profissional/Profissional-lista/profissional-lista.component';
 import { ProfissionalCadastrarComponent } from './Profissional/Profissional-cadastrar/profissional-cadastrar.component';
