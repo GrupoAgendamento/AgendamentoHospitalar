@@ -15,31 +15,67 @@ export class AgendamentoCadastrarComponent {
     especialidades: any = [];
     beneficiarios: any = [];
     hospitais: any = [];
+    idHospitalSelecionado = 0;
+    idBeneficiarioSelecionado = 0;
+    idProfissionalSelecionado = 0;
+    idEspecialidadeSelecionado = 0;
+    dados = {
+      hospital: this.idHospitalSelecionado,
+      Beneficiario: this.idBeneficiarioSelecionado,
+      Profissional: this.idProfissionalSelecionado,
+      Especialidade: this.idEspecialidadeSelecionado
+    }
+
 
     constructor(private http: HttpClient,
       private route: ActivatedRoute,
       private router: Router,
       private toastr: ToastrService
       ) {
-        //this.route.paramMap.subscribe((params) => {
-         // this.agendamento.idAgendamento = Number(params.get('id'));
-       // });
 
       }
 
   ngOnInit() {
+
     this.agendamento = {
-      idAgendamento: 0,
       idHospital: 0,
       idEspecialidade: 0,
       idProfissional: 0,
-      dataAgendamento: new Date(),
-      beneficiario: '',
+      DataHoraAgendamento: new Date(),
       idBeneficiario: 0,
-      numeroCarteirinha: '',
-      hospital: '',
-      especialidade: '',
-      profissional: ''
+      ativo: true,
+      idBeneficiarioNavigation: {
+        nome: '',
+        cpf: '',
+        telefone: '',
+        endereco: '',
+        numeroCarteirinha: '',
+        ativo: true,
+        email: '',
+        senha: ''
+      },
+      idEspecialidadeNavigation: {
+        idEspecialidade: 0,
+        nome: '',
+        descricao: '',
+        ativo: true
+      },
+      idHospitalNavigation: {
+        idHospital: 0,
+        nome: '',
+        cnpj: '',
+        endereco: '',
+        telefone: '',
+        cnes: '',
+        ativo: true
+      },
+      idProfissionalNavigation: {
+        idProfissional: 0,
+        nome: '',
+        telefone: '',
+        endereco: '',
+        ativo: true
+      }
     }
 
     this.getBeneficiario();
@@ -48,46 +84,59 @@ export class AgendamentoCadastrarComponent {
     this.getProfissional();
   }
 
-  salvarAgendamento(){
-    if(this.agendamento.idAgendamento == 0){
-      this.http.post('https://localhost:7026/api/Agendamento', this.agendamento)    .subscribe(() =>
-      {this.router.navigate(['consultar']);});
-      }
-      else
-      {
-        this.http.patch(`https://localhost:7026/api/Agendamento/${this.agendamento.idAgendamento}`, this.agendamento)      .subscribe(() =>
-        {
-          this.router.navigate(['consultar']);      });  }  }
-
-          getHospitais() {
-            this.http.get('https://localhost:7026/api/Hospital').subscribe((response: any) => {
-              this.hospitais = response;
-            }, error => {
-              console.log(error);
-            });
-          }
-
-          getEspecialidade() {
-            this.http.get('https://localhost:7026/api/Especialidade').subscribe((response: any) => {
-              this.especialidades = response;
-            }, error => {
-              console.log(error);
-            });
-          }
-
-          getProfissional() {
-            this.http.get('https://localhost:7026/api/Profissional').subscribe((response: any) => {
-              this.profissionais = response;
-            }, error => {
-              console.log(error);
-            });
-          }
-
-          getBeneficiario() {
-            this.http.get('https://localhost:7026/api/Beneficiario').subscribe((response: any) => {
-              this.beneficiarios = response;
-            }, error => {
-              console.log(error);
-            });
-          }
+  salvarAgendamento() {
+    this.http.post('https://localhost:7026/api/Agendamento/AddPost', this.agendamento).subscribe((response: any) => {
+      debugger;
+      this.toastr.success('Agendamento realizado com sucesso!', 'Sucesso!');
+      this.router.navigate(['/agendamento']);
+    }, error => {
+      this.toastr.error('Erro ao realizar agendamento!', 'Erro!');
+      console.log(error);
+    });
   }
+
+  getHospitais() {
+    this.http.get('https://localhost:7026/api/Hospital').subscribe((response: any) => {
+      this.hospitais = response;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getEspecialidade() {
+    this.http.get('https://localhost:7026/api/Especialidade').subscribe((response: any) => {
+      this.especialidades = response;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getProfissional() {
+    this.http.get('https://localhost:7026/api/Profissional').subscribe((response: any) => {
+      this.profissionais = response;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getBeneficiario() {
+    this.http.get('https://localhost:7026/api/Beneficiario').subscribe((response: any) => {
+      this.beneficiarios = response;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  onSelect(){
+    this.dados = {
+      hospital: this.idHospitalSelecionado,
+      Beneficiario: this.idBeneficiarioSelecionado,
+      Profissional: this.idProfissionalSelecionado,
+      Especialidade: this.idEspecialidadeSelecionado
+    }
+  }
+
+  onChange() {
+    console.log(this.idBeneficiarioSelecionado);
+  }
+}

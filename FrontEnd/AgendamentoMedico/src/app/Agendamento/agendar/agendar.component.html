@@ -3,8 +3,8 @@
 <form class="row g-3 needs-validation" novalidate>
   <!--CPF-->
     <div class="col-md-4">
-      <label for="agendamentoNome" class="form-label">Selecione o paciente:</label>
-      <select id="agendamentoNome">
+      <label for="agendamentoNome" class="form-label">Selecione o Beneficiário:</label>
+      <select bindLabel="idBeneficiario" bindValue="idBeneficiario" [ngModelOptions]="{standalone: true}" [(ngModel)]="idBeneficiarioSelecionado" (click)="onSelect()">
         <option *ngFor="let beneficiario of beneficiarios" value= {{beneficiario.idBeneficiario}}>
           {{beneficiario.nome}}
         </option>
@@ -14,8 +14,8 @@
   <!--Hospital-->
   <div class="col-md-4">
     <label for="agendamentoHospital" class="form-label">Selecione o hospital:</label>
-    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="hospitais.idHospital" id="agendamentoHospital">
-      <option *ngFor="let hospital of hospitais" value= {{hospitais.idHospital}}>
+    <select bindLabel="idHospital" bindValue="idHospital" [ngModelOptions]="{standalone: true}" [(ngModel)]="idHospitalSelecionado" (click)="onSelect()">
+      <option *ngFor="let hospital of hospitais" value= {{hospital.idHospital}}>
         {{hospital.nome}}
       </option>
     </select>
@@ -24,7 +24,7 @@
   <!--Especialidade-->
   <div class="col-md-4">
     <label for="agendamentoEspecialidade" class="form-label">Selecione a especialidade:</label>
-    <select id="agendamentoEspecialidade">
+    <select  bindLabel="idEspecialidade" bindValue="idEspecialidade" [ngModelOptions]="{standalone: true}" [(ngModel)]="idEspecialidadeSelecionado" (click)="onSelect()">
       <option *ngFor="let especialidade of especialidades" value= {{especialidade.idEspecialidade}}>
         {{especialidade.nome}}
       </option>
@@ -34,7 +34,7 @@
   <!--Médico-->
   <div class="col-md-4">
     <label for="agendamentoProfissional" class="form-label">Selecione o profissional:</label>
-    <select id="agendamentoProfissional">
+    <select bindLabel="idProfissional" bindValue="idProfissional" [ngModelOptions]="{standalone: true}" [(ngModel)]="idProfissionalSelecionado" (click)="onSelect()" >
       <option *ngFor="let profissional of profissionais" value= {{profissional.idProfissional}}>
         {{profissional.nome}}
       </option>
@@ -44,7 +44,7 @@
     <!--Data-->
     <div class="col-md-4">
       <label for="agendamentoData" class="form-label">Selecione a data para agendamento:</label>
-      <input type="datetime-local" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.dataAgendamento" required id="agendamentoData">
+      <input type="datetime-local" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.DataHoraAgendamento" required id="agendamentoData" (click)="onSelect()">
       <div class="invalid-feedback">
         É obrigatório informar a data para agendamento.
       </div>
