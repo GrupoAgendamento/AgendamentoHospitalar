@@ -2,22 +2,18 @@
 
 <form class="row g-3 needs-validation" novalidate>
   <!--CPF-->
-    <div class="col-md-4">
-      <label for="agendamentoNome" class="form-label">Selecione o paciente:</label>
-      <select id="agendamentoNome">
-        <option *ngFor="let beneficiario of beneficiarios" value= {{beneficiario.idBeneficiario}}>
-          {{beneficiario.nome}}
-        </option>
-      </select>
-      </div>
+  <div class="col-md-4">
+    <label for="agendamentoCpf" class="form-label">CPF do paciente:</label>
+    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="agendamento.cpf" placeholder="XXX.XXX.XXX-XX" required id="agendamentoCPF">
+    <div class="invalid-feedback">
+      É obrigatório informar o CPF do paciente.
+    </div>-->
+    </div>
 
   <!--Hospital-->
   <div class="col-md-4">
     <label for="agendamentoHospital" class="form-label">Selecione o hospital:</label>
-    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="hospitais.idHospital" id="agendamentoHospital">
-      <option *ngFor="let hospital of hospitais" value= {{hospitais.idHospital}}>
-        {{hospital.nome}}
-      </option>
+    <select id="agendamentoHospital">
     </select>
   </div>
 
@@ -25,9 +21,9 @@
   <div class="col-md-4">
     <label for="agendamentoEspecialidade" class="form-label">Selecione a especialidade:</label>
     <select id="agendamentoEspecialidade">
-      <option *ngFor="let especialidade of especialidades" value= {{especialidade.idEspecialidade}}>
+      <!--<option *ngFor="let especialidade of especialidades" value= {{especialidade.id}}>
         {{especialidade.nome}}
-      </option>
+      </option>-->
     </select>
     </div>
 
@@ -35,7 +31,7 @@
   <div class="col-md-4">
     <label for="agendamentoProfissional" class="form-label">Selecione o profissional:</label>
     <select id="agendamentoProfissional">
-      <option *ngFor="let profissional of profissionais" value= {{profissional.idProfissional}}>
+      <option *ngFor="let profissional of profissionais" value= {{profissional.id}}>
         {{profissional.nome}}
       </option>
     </select>
@@ -52,6 +48,6 @@
 
   <!--Enviar-->
   <div class="col-12">
-    <button class="btn btn-success mt-3" type="submit" (click)="salvarAgendamento()">Salvar</button>
+    <button class="btn btn-success mt-3" type="submit" (click)="editarAgendamento()">Salvar</button>
   </div>
 </form>
