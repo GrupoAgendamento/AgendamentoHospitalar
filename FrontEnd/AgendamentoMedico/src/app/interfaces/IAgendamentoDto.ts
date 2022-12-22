@@ -3,7 +3,11 @@ export interface IAgendamentoDto{
   idHospital: number,
   idEspecialidade: number,
   idProfissional: number,
+  idBeneficiario: number,
   dataAgendamento: Date,
-  cpf: string,
+  beneficiario: string,
   numeroCarteirinha: string,
+  hospital: string,
+  especialidade: string,
+  profissional: string
 }

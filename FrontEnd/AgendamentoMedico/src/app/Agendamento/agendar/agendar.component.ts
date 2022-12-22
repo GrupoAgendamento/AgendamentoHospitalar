@@ -1,21 +1,31 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Component } from '@angular/core';
 import { IAgendamentoDto } from '../../interfaces/IAgendamentoDto';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-agendar',
+  selector: 'app-agendamento',
   templateUrl: './agendar.component.html',
   styleUrls: ['./agendar.component.css']
 })
-export class AgendamentoCadastrarComponent implements OnInit {
+export class AgendamentoCadastrarComponent {
+    agendamento!: IAgendamentoDto;
+    profissionais: any = [];
+    especialidades: any = [];
+    beneficiarios: any = [];
+    hospitais: any = [];
 
-  form: FormGroup = new FormGroup({});
-  agendamento!: IAgendamentoDto;
-  mensagem: string = '';
+    constructor(private http: HttpClient,
+      private route: ActivatedRoute,
+      private router: Router,
+      private toastr: ToastrService
+      ) {
+        //this.route.paramMap.subscribe((params) => {
+         // this.agendamento.idAgendamento = Number(params.get('id'));
+       // });
 
-  constructor(private http: HttpClient, private router: Router) { }
+      }
 
   ngOnInit() {
     this.agendamento = {
@@ -24,12 +34,21 @@ export class AgendamentoCadastrarComponent implements OnInit {
       idEspecialidade: 0,
       idProfissional: 0,
       dataAgendamento: new Date(),
-      cpf: '',
+      beneficiario: '',
+      idBeneficiario: 0,
       numeroCarteirinha: '',
+      hospital: '',
+      especialidade: '',
+      profissional: ''
     }
+
+    this.getBeneficiario();
+    this.getEspecialidade();
+    this.getHospitais();
+    this.getProfissional();
   }
 
-  Salvar(){
+  salvarAgendamento(){
     if(this.agendamento.idAgendamento == 0){
       this.http.post('https://localhost:7026/api/Agendamento', this.agendamento)    .subscribe(() =>
       {this.router.navigate(['consultar']);});
@@ -39,4 +58,36 @@ export class AgendamentoCadastrarComponent implements OnInit {
         this.http.patch(`https://localhost:7026/api/Agendamento/${this.agendamento.idAgendamento}`, this.agendamento)      .subscribe(() =>
         {
           this.router.navigate(['consultar']);      });  }  }
+
+          getHospitais() {
+            this.http.get('https://localhost:7026/api/Hospital').subscribe((response: any) => {
+              this.hospitais = response;
+            }, error => {
+              console.log(error);
+            });
+          }
+
+          getEspecialidade() {
+            this.http.get('https://localhost:7026/api/Especialidade').subscribe((response: any) => {
+              this.especialidades = response;
+            }, error => {
+              console.log(error);
+            });
+          }
+
+          getProfissional() {
+            this.http.get('https://localhost:7026/api/Profissional').subscribe((response: any) => {
+              this.profissionais = response;
+            }, error => {
+              console.log(error);
+            });
+          }
+
+          getBeneficiario() {
+            this.http.get('https://localhost:7026/api/Beneficiario').subscribe((response: any) => {
+              this.beneficiarios = response;
+            }, error => {
+              console.log(error);
+            });
+          }
   }
