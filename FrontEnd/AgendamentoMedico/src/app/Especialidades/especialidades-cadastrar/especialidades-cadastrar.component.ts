@@ -49,12 +49,15 @@ import { ToastrService } from 'ngx-toastr';
           if(this.especialidade.idEspecialidade == 0){
           this.http.post('https://localhost:7026/api/Especialidade', this.especialidade)
           .subscribe(() => {
-            this.router.navigate(['especialidadecadastrar']);
+            this.router.navigate(['especialidadescadastrar']);
+            this.toastr.success('Especialidade cadastrada com sucesso.', 'Sucesso!', {
+              timeOut: 3000
+            });
             });
           }else {
             this.http.put(`https://localhost:7026/api/Especialidade/${this.especialidade.idEspecialidade}`, this.especialidade)
             .subscribe(() => {
-              this.router.navigate(['especialidadecadastrar']);
+              this.router.navigate(['especialidadescadastrar']);
             });
           }
         }else {

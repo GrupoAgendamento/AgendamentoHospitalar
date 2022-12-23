@@ -1,16 +1,18 @@
-<form class="form-cadastro">
-  <h1>Cadastro de especialidades</h1>
-  <div class="container">
+<form class="form-cadastro form-profissional">
+  <h1>Editar especialidade</h1>
+  <div class="form-profissional">
 
-    <div class="col-md-4">
+    <div class="col-md-10">
       <label for="nomeEspecialidade" class="col-sm-4 col-form-label">Especialidade: </label>
         <input type="text" class="form-control" id="nomeEspecialidade" [(ngModel)]="especialidade.nome" name="nomeEspecialidade">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-10">
     <label for="descricaoEspecialidade" class="col-sm-4 col-form-label">Descrição: </label>
     <input type="text" class="form-control" id="descricaoEspecialidade" [(ngModel)]="especialidade.descricao" name="descricaoEspecialidade">
      </div>
-     <button class="btn btn-success col-mr-4" type="submit" (click)="salvarEspecialidade()">Salvar</button>
-    </div>
-  </form>
+     <div class="btn-container">
+       <button class="btn btn-success mt-2 col-mr-4" type="submit" (click)="salvarEspecialidade()">Salvar</button>
+     </div>
+  </div>
+</form>

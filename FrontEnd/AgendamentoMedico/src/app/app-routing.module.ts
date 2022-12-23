@@ -15,15 +15,12 @@ import { AgendamentoCadastrarComponent } from './Agendamento/agendar/agendar.com
 import { ConsultarComponent } from './Agendamento/consultar/consultar.component';
 
 const routes: Routes = [
-  { path: 'beneficiariocadastrar', component: BeneficiarioEditarComponent },
-  { path: 'beneficiariocadastrar/:id', component: BeneficiarioEditarComponent },
   { path: 'beneficiariolista', component: BeneficiarioListaComponent },
-  { path: 'hospitalcadastrar', component: HospitalEditarComponent },
-  { path: 'hospitalcadastrar/:id', component: HospitalEditarComponent },
+  { path: 'hospitalcadastrar', component: HospitalCadastrarComponent },
+  { path: 'hospitaleditar/:id', component: HospitalEditarComponent },
   { path: 'beneficiariocadastrar', component: BeneficiarioCadastrarComponent },
   { path: 'beneficiarioeditar/:id', component: BeneficiarioEditarComponent },
   { path: 'beneficiariolista', component: BeneficiarioListaComponent },
-  { path: 'hospitaleditar/:id', component: HospitalEditarComponent },
   { path: 'hospitalcadastrar', component: HospitalCadastrarComponent },
   { path: 'hospitallista', component: HospitalListaComponent },
   { path: 'profissionalcadastrar', component: ProfissionalCadastrarComponent },
