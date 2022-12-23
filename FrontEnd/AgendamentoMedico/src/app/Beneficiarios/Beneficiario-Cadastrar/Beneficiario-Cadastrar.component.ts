@@ -34,9 +34,11 @@ export class BeneficiarioCadastrarComponent implements OnInit {
   Salvar(){
     this.http.post('https://localhost:7026/api/Beneficiario', this.beneficiario).subscribe((response: any) => {
       this.beneficiario = { nome: '', cpf: '', telefone: '', email: '', endereco: '', numeroCarteirinha: '', ativo: false, senha: ''}
-      this.toastr.success('Beneficiário cadastrado com sucesso.', 'Sucesso!', {
+      this.toastr.success('Beneficiário cadastrado com sucesso.', 'Sucesso!',
+       {
         timeOut: 3000
       })
+      this.router.navigate(['beneficiariolista']);
     }
     );
   }
